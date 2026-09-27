@@ -1,0 +1,5 @@
+# EPANET++ -- epanet-plus-plus.org. This host's own sitemap lists only this site's pages.
+Sitemap: https://epanet-plus-plus.org/sitemap.xml
+
+User-agent: *
+Disallow:

@@ -1,0 +1,18 @@
+# epanet-plus-plus.org -- the document root IS this repository.
+#
+# NO `Options` LINE, DELIBERATELY. An Options directive where AllowOverride Options is not granted
+# returns 500 for EVERY request on the host. Everything below is mod_alias, as on LibreWaterNet.org,
+# which runs on the same cPanel account.
+#
+# Every path with a directory segment beginning with a dot (.git above all) is a 404. <FilesMatch>
+# would not cover it: it matches file NAMES, and .git/config is not itself a dotfile.
+RedirectMatch 404 "/\.(?!well-known/)[^/]+/"
+#
+# The build tooling and the working notes are not visitor material. tools/ is declared "deny" in
+# check.sh; a new directory must be declared there too, or check.sh fails.
+RedirectMatch 404 "^/tools(/|$)"
+RedirectMatch 404 "\.(md|sh|py)$"
+#
+# /app/ IS NOT SERVED HERE UNDER OPTION A. Every "Open the network editor" button links straight
+# to APP_URL in tools/build.py (today https://librewaternet.org/app/). Option B1 mounts the app at
+# /app/ on this host; that is when a rule for /app belongs in this file, not before.

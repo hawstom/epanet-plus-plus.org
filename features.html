@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>What EPANET++ does</title>
+<meta name="description" content="The feature list: what the EPANET++ network editor does, in a browser, free, with no account.">
+<link rel="canonical" href="https://epanet-plus-plus.org/features.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EPANET++">
+<meta property="og:url" content="https://epanet-plus-plus.org/features.html">
+<meta property="og:title" content="What EPANET++ does">
+<meta property="og:description" content="The feature list: what the EPANET++ network editor does, in a browser, free, with no account.">
+<meta property="og:image" content="https://epanet-plus-plus.org/img/0082.png">
+<meta property="og:image:width" content="1921">
+<meta property="og:image:height" content="920">
+<meta property="og:image:alt" content="One browser window showing a water network on a street map with several analysis boxes open over it.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<!-- BEGIN GENERATED CHROME -->
+	<div class="marks">
+		<a class="wordmark" href="index.html">EPANET<span class="pp">++</span></a>
+	</div>
+	<nav>
+		<a href="index.html">Front page</a>
+		<a href="features.html" aria-current="page">Feature list</a>
+		<a href="screenshots.html">Screenshots</a>
+		<a href="credits.html">Credits</a>
+		<a href="disclosures.html">Disclosures</a>
+		<a href="citations.html">Citations</a>
+		<a href="https://hawsedc.com/engcalcs/contact.php">Contact</a>
+	</nav>
+	<!-- END GENERATED CHROME -->
+</header>
+
+<main>
+
+<div class="hero">
+	<span class="label">The whole list</span>
+	<h1>What it does<span class="rule-under"></span></h1>
+</div>
+
+<p class="dek">Everything here works in a browser, free, with no account.</p>
+
+<!-- HAND-MAINTAINED. This mirrors LibreWaterNet.org's features.html (itself built from EngCalcs'
+     dev/features.md) with the EPANET++ extensions added in our own words. It is a list of what
+     we built, NEVER a comparison table against EPANET: no row says or implies what EPANET lacks. -->
+<p class="standfirst"><strong>This list is long and detailed, but incomplete.</strong> Use your
+browser&rsquo;s find (Ctrl+F, or &#8984;F on a Mac) to search for a feature you are interested in.
+If you only want to know whether the thing is any good, <a data-app="" href="https://librewaternet.org/app/">diving in saves
+time</a>.</p>
+
+<p class="count">37 things it does.</p>
+
+<nav class="jump" aria-label="Sections">
+	<a href="#extensions">The extensions</a>
+	<a href="#solver">Solver</a>
+	<a href="#projects">Projects and saving</a>
+	<a href="#import">Import, export, and map</a>
+	<a href="#assets">Assets and results</a>
+	<a href="#eps">Extended-period simulation</a>
+	<a href="#language">Language, license, and privacy</a>
+</nav>
+
+<section class="act" id="extensions">
+<h2>The extensions <span class="ct">9</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Scenarios: each one holds only its overrides of the base model, with an override report and a scenario comparison report.</td></tr>
+	<tr><td>World map canvas, street or satellite, or your own backdrop with friendly positioning options.</td></tr>
+	<tr><td>Fire flow analysis across the whole system, reporting where the required flow fails and where it pulls pressure below design elsewhere.</td></tr>
+	<tr><td>Customers: metered services with demand, service count, and pattern, each connected to the node or pipe that serves it.</td></tr>
+	<tr><td>Custom properties on any kind of asset, with your own labels and limits, overridable by a scenario, and flagged in place when a value breaks its own limits.</td></tr>
+	<tr><td>Pipe types library: one &ldquo;150 mm PVC&rdquo; definition that many pipes refer to, so editing the definition edits every pipe using it. Detach one pipe when it needs to be the exception.</td></tr>
+	<tr><td>Fittings library: a pipe&rsquo;s minor loss summed from named fittings and their quantities, starting from the EPANET user manual&rsquo;s own table and editable.</td></tr>
+	<tr><td>Import whole libraries from another project file. A name already taken is skipped and listed, so nothing you have is changed.</td></tr>
+	<tr><td>Group edit three ways: find and replace, select an area, or edit the tables like a spreadsheet.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="solver">
+<h2>Solver <span class="ct">3</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>The EPANET 2.3.5 engine, running in your browser, for steady state and extended-period simulation.</td></tr>
+	<tr><td>A built-in solver of our own for a single moment, and a display comparing the two.</td></tr>
+	<tr><td>Recalculate automatically, or only when you ask.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="projects">
+<h2>Projects and saving <span class="ct">2</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Several projects open in tabs, kept in your browser, or saved to a project file with locking for sharing on an office network.</td></tr>
+	<tr><td>Install for offline use.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="import">
+<h2>Import, export, and map <span class="ct">4</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>EPANET <code>.inp</code> files import and export, with a report of everything accepted or ignored, and unedited values written back character for character.</td></tr>
+	<tr><td>Examples from EPANET and others, on XY and on latitude and longitude, loaded and solved in one click.</td></tr>
+	<tr><td>An import wizard that moves an XY model onto the world map.</td></tr>
+	<tr><td>Place-name search, and ground elevations read from the map&rsquo;s terrain data with a preview.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="assets">
+<h2>Assets and results <span class="ct">8</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Junction, reservoir, tank, pipe with vertex drawing and editing, pump, valve, customer, and annotation text.</td></tr>
+	<tr><td>Node and link labels built from several fields, with prefixes, suffixes, a separator, and a drop order, placed automatically or by hand on leaders or along links.</td></tr>
+	<tr><td>Find, replace, and go to elements, including compound queries in your language.</td></tr>
+	<tr><td>Editable, pasteable, spreadsheet-like tables for every kind of asset.</td></tr>
+	<tr><td>Network coloring: three to seven ranges, eight ways of choosing where the breaks fall, and 41 color ramps.</td></tr>
+	<tr><td>Multi-line annotation text with bold, rotation that can match a pipe, and association to an asset.</td></tr>
+	<tr><td>Separate size settings for text, symbols, and pipes.</td></tr>
+	<tr><td>Hydraulic grade line profiles along a path you choose and edit.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="eps">
+<h2>Extended-period simulation <span class="ct">8</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Patterns for demands, reservoir head, and pump speed.</td></tr>
+	<tr><td>Simple controls and EPANET-style rule-based controls.</td></tr>
+	<tr><td>Pump, efficiency, head loss, and tank volume curves, defined once in the Libraries box and referred to by name, so a manufacturer&rsquo;s curve keeps every point it was published with.</td></tr>
+	<tr><td>Playback of the run, step by step or animated.</td></tr>
+	<tr><td>The EPANET run report, including every element at every time step and what switched, and when.</td></tr>
+	<tr><td>Color limits held constant through a run, so a color means the same thing at every step.</td></tr>
+	<tr><td>Water quality: age, share from a source, chemical decay.</td></tr>
+	<tr><td>Pump energy: run time, power, and cost including a peak demand charge.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="language">
+<h2>Language, license, and privacy <span class="ct">3</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Twenty-seven languages, and every word is evaluated for translation.</td></tr>
+	<tr><td>Free software under the GNU GPL, source in the open.</td></tr>
+	<tr><td>No account, no visitor identifier, and nothing counted about you unless you say yes.</td></tr>
+</tbody>
+</table>
+</section>
+
+<div class="go">
+	<a class="btn" data-app="" href="https://librewaternet.org/app/">Open the network editor</a>
+	<a class="btn btn-ghost" data-app="?lpn_examples=1" href="https://librewaternet.org/app/?lpn_examples=1">Open an example</a>
+	<a class="btn btn-ghost" href="screenshots.html">See it working</a>
+</div>
+
+</main>
+
+<footer>
+	<p><b>Not the EPA&rsquo;s.</b> This site is not affiliated with, endorsed by, or sponsored by the
+	United States Environmental Protection Agency. EPANET is a public-domain program of the US EPA.
+	EPANET++ is not EPANET.</p>
+	<p>This page makes no request to any other server: no fonts, no scripts, no images from
+	elsewhere, no analytics, no cookies, and no storage on your device.</p>
+	<p><a href="index.html">Back to the front page</a> &middot;
+	<a href="citations.html">Every claim, with its source</a></p>
+</footer>
+
+</div>
+
+</body>
+</html>

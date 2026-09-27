@@ -1,0 +1,716 @@
+/* ============================================================================
+   Not EPANET -- gateway site.
+
+   A SIBLING of librewaternet.org, not a departure: the same drawing-sheet
+   material (hairline frame, faint grid, condensed drafting labels, black ink
+   and water blue, one red pencil accent). Two deliberate differences:
+
+     1. NO WEB FONTS. That site links Google Fonts; this one may make no
+        external request of any kind, because the first thing a reader of a
+        page about honesty checks is the network tab. System stacks only.
+     2. The page is quieter. This is a doorway, not a shop window, so the
+        type scale tops out well below the sibling's hero.
+   ========================================================================= */
+
+:root {
+	--paper:      #FBFBF9;
+	--paper-2:    #F2F4F6;
+	--ink:        #14181C;
+	--ink-2:      #58636E;
+	--rule:       #D3DAE1;
+	--rule-soft:  #E7EBEF;
+	--water:      #1B5FA8;
+	/* The link's HOVER, and its job is to step AWAY from the page: darker than --water on paper,
+	   lighter than it on a dark ground, so it is redefined per theme below. It used to be #4E8BC9
+	   and consumed by nothing -- lighter than --water, which on near-white paper measures 3.46:1
+	   and fails AA for text, so it could not have taken this job as it stood (2026-09-12). */
+	--water-2:    #14477E;
+	--water-soft: #E6EFF8;
+	/* A SOLID BUTTON IS THE SAME COLOUR IN BOTH THEMES, deliberately, and that is why these three
+	   are NOT in the theme blocks below. --water has two jobs -- text on a dark ground, and a large
+	   fill -- and one token cannot do both: inverted to a light tint for text, it turns every
+	   filled button into a bright plate glowing on a near-black page. Tom, 2026-09-12: *"These
+	   colors are painful to my eyes."* So the fill holds the light-mode blue always, and carries
+	   its own near-white ink rather than --paper, which flips to near-black in dark mode and would
+	   put 1.5:1 text on it. Measured: ink on fill 6.32:1, ink on the hover fill 9.19:1. */
+	--water-fill:       #1B5FA8;
+	--water-fill-ink:   #FBFBF9;
+	--water-fill-hover: #14477E;
+	/* Red pencil. An engineer marks up a drawing in red, and it is NOT an interactive colour:
+	   the disclaimer rule, the drafting ticks, and the invitation box with its own two asks. Plain
+	   navigation is water. It had spread to every link's hover state, .count and .level, at which
+	   point it was the page's second link colour rather than an accent (2026-09-12). */
+	--pencil:     #B24428;
+
+	--sheet-max: 960px;
+	--step--1: clamp(.79rem, .75rem + .16vw, .87rem);
+	--step-0:  clamp(1rem, .96rem + .2vw, 1.08rem);
+	--step-1:  clamp(1.14rem, 1.06rem + .38vw, 1.34rem);
+	--step-2:  clamp(1.5rem, 1.3rem + .9vw, 2rem);
+	--step-3:  clamp(2rem, 1.5rem + 2.4vw, 3.4rem);
+
+	--serif: Georgia, "Iowan Old Style", "Times New Roman", Times, serif;
+	--sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	/* The sibling site loads Barlow Condensed from Google Fonts; this one may make no
+	   external request, so the name is kept only for a reader who already has it and the
+	   stack is expected to fall through. Where it falls all the way to --sans the eyebrows
+	   and buttons render wider than drawn. That is accepted; a request is not. */
+	--cond: "Barlow Condensed", "Archivo Narrow", "Arial Narrow", "Liberation Sans Narrow", var(--sans);
+	--mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+	color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--paper:      #10151A;
+		--paper-2:    #171E25;
+		--ink:        #E8EDF2;
+		--ink-2:      #97A4B1;
+		--rule:       #2C3841;
+		--rule-soft:  #1E262E;
+		--water:      #6FA8DC;
+		--water-2:    #9CC6EA;
+		--water-soft: #17242F;
+		--pencil:     #E0745A;
+		color-scheme: dark;
+	}
+}
+:root[data-theme="dark"] {
+	--paper:      #10151A;
+	--paper-2:    #171E25;
+	--ink:        #E8EDF2;
+	--ink-2:      #97A4B1;
+	--rule:       #2C3841;
+	--rule-soft:  #1E262E;
+	--water:      #6FA8DC;
+	--water-2:    #9CC6EA;
+	--water-soft: #17242F;
+	--pencil:     #E0745A;
+	color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+/* A bare URL in running text is longer than a narrow phone is wide, and the page must never
+   scroll sideways. Applied at the root rather than to .mono alone, because the same hazard
+   appears wherever a domain or a file name is quoted. */
+body { overflow-wrap: anywhere; }
+
+body {
+	margin: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--serif);
+	font-size: var(--step-0);
+	line-height: 1.62;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* The faint drafting grid, as on the sibling site. */
+.sheet-bg {
+	position: fixed; inset: 0; z-index: -1; pointer-events: none;
+	background-image:
+		linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
+	background-size: 34px 34px;
+	opacity: .7;
+	-webkit-mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 30%, transparent 78%);
+	mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, #000 30%, transparent 78%);
+}
+
+.sheet {
+	max-width: var(--sheet-max);
+	margin: 0 auto;
+	padding: 0 clamp(1rem, 4vw, 2.6rem);
+}
+
+h1, h2, h3 {
+	font-family: var(--sans);
+	margin: 0;
+	line-height: 1.12;
+	letter-spacing: -.02em;
+	text-wrap: balance;
+}
+h1 { font-size: var(--step-3); font-weight: 800; }
+h2 { font-size: var(--step-2); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 650; }
+
+p { margin: 0 0 1rem; max-width: 68ch; }
+a { color: var(--water); }
+a:hover, a:focus-visible { color: var(--water-2); }
+
+.label {
+	font-family: var(--cond);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .13em;
+	font-size: var(--step--1);
+	color: var(--ink-2);
+	margin: 0 0 .55rem;
+	display: block;
+}
+
+/* --- header ------------------------------------------------------------- */
+.topbar {
+	display: flex; align-items: baseline; justify-content: space-between;
+	gap: 1rem; flex-wrap: wrap;
+	padding: 1.3rem 0 1rem;
+	border-bottom: 1px solid var(--rule);
+}
+.wordmark {
+	font-family: var(--sans);
+	font-weight: 800; font-size: 1.05rem;
+	letter-spacing: -.02em;
+	color: var(--ink); text-decoration: none;
+}
+
+/* **TWO WORDMARKS, ONE UPPER-LEFT.** The sister site's name sits beside our own, quieter
+   than it but built from the same parts, so the pair reads as two doors rather than as a
+   brand and an advertisement. It wraps before the nav does, because on a narrow screen the
+   thing a reader needs first is still "where am I". */
+.marks { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.marks .sister { font-weight: 700; color: var(--ink-2); }
+.marks .sister .libre { color: var(--water); }
+.marks .sister:hover, .marks .sister:focus-visible { color: var(--ink); }
+.topbar nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.topbar nav a { color: var(--ink-2); text-decoration: none; font-family: var(--sans); font-size: .92rem; }
+.topbar nav a:hover, .topbar nav a:focus-visible { color: var(--water); }
+
+/* --- the disclaimer, which is the whole point of the site ---------------- */
+.hero { padding: clamp(2rem, 5vw, 3.4rem) 0 0; }
+.hero h1 .rule-under {
+	display: block; width: 4.2rem; height: 3px;
+	background: var(--pencil); margin: 1rem 0 0;
+}
+.lede { font-size: var(--step-1); max-width: 46ch; margin: 1.2rem 0 0; }
+
+.disclaimer {
+	margin: 2rem 0 0;
+	border: 1px solid var(--pencil);
+	border-left-width: 4px;
+	background: var(--paper);
+	padding: 1.1rem clamp(1rem, 3vw, 1.6rem);
+}
+.disclaimer p:last-child { margin-bottom: 0; }
+.disclaimer .label { color: var(--pencil); }
+
+/* --- the two doors ------------------------------------------------------ */
+.doors {
+	display: grid; gap: 1rem; margin: 2.2rem 0 0;
+	grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .doors { grid-template-columns: 1fr 1fr; } }
+.door {
+	border: 1px solid var(--rule);
+	background: var(--paper);
+	padding: 1.2rem clamp(1rem, 3vw, 1.5rem);
+	display: flex; flex-direction: column;
+}
+.door h3 { margin-bottom: .5rem; }
+.door p { font-size: .96rem; flex: 1; }
+.btn {
+	align-self: flex-start;
+	font-family: var(--cond);
+	font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
+	font-size: 1rem;
+	padding: .62rem 1.3rem;
+	border: 1px solid var(--water-fill);
+	background: var(--water-fill); color: var(--water-fill-ink);
+	text-decoration: none;
+}
+/* Darkens rather than flipping to --ink, which in dark mode is near-WHITE: a hover that turns the
+   button into a white plate is the glare these tokens exist to remove, at its worst. */
+.btn:hover, .btn:focus-visible {
+	background: var(--water-fill-hover); border-color: var(--water-fill-hover);
+	color: var(--water-fill-ink);
+}
+
+/* --- sections ----------------------------------------------------------- */
+section { padding: clamp(2.4rem, 6vw, 4rem) 0 0; }
+.sec-head { border-top: 1px solid var(--rule); padding-top: 1.2rem; margin-bottom: 1.4rem; }
+.sec-head h2 { max-width: 24ch; }
+.sec-head .sub { color: var(--ink-2); margin: .6rem 0 0; }
+
+.item { margin: 0 0 2rem; }
+.item h3 { margin-bottom: .5rem; }
+/* What a section's rows are holding up, and where to go and read it. A citation number is only
+   worth having if the page it supports can be reached from it (Tom, 2026-09-12). */
+.seclead { margin: -.2rem 0 .9rem; max-width: 70ch; color: var(--ink-2); font-size: var(--step--1, .94em); }
+.seclead a { color: var(--water); }
+.item:last-child { margin-bottom: 0; }
+
+blockquote {
+	margin: 0 0 1rem;
+	padding: 0 0 0 1.1rem;
+	border-left: 3px solid var(--water);
+	color: var(--ink);
+	font-style: italic;
+}
+blockquote p:last-child { margin-bottom: 0; }
+blockquote .attrib { font-style: normal; font-family: var(--sans); font-size: .88rem; color: var(--ink-2); display: block; margin-top: .5rem; }
+
+/* A measured fact, set apart so it can be checked one at a time. */
+.facts { list-style: none; margin: 0 0 1rem; padding: 0; max-width: 68ch; }
+.facts li {
+	border-top: 1px solid var(--rule-soft);
+	padding: .7rem 0;
+}
+.facts li:last-child { border-bottom: 1px solid var(--rule-soft); }
+.facts b { font-family: var(--sans); font-weight: 650; }
+code, .mono { font-family: var(--mono); font-size: .9em; }
+
+/* The licence-required acknowledgement and other fine print. */
+.finewords {
+	font-size: .9rem; color: var(--ink-2);
+	background: var(--paper-2);
+	border: 1px solid var(--rule-soft);
+	padding: .8rem 1rem;
+	max-width: 68ch;
+}
+.finewords p { margin: 0; max-width: none; }
+
+/* ---------------------------------------------------------------------------
+   The claims ledger (claims.html). A table is the right shape here and not a
+   decorative one: the page's whole argument is that each assertion stands on
+   its own line and can be checked without reading the ones around it.
+
+   The source column carries long citations and bare file paths, so the table
+   gets its own horizontal scroll rather than letting the sheet scroll sideways.
+   -------------------------------------------------------------------------- */
+.table-scroll {
+	overflow-x: auto;
+	margin: 0 0 1.4rem;
+	border: 1px solid var(--rule-soft);
+}
+.table-scroll table {
+	border-collapse: collapse;
+	width: 100%;
+	min-width: 34rem;
+	font-size: var(--step--1);
+	background: var(--paper);
+}
+.table-scroll th {
+	font-family: var(--cond);
+	text-transform: uppercase;
+	letter-spacing: .08em;
+	font-size: .78rem;
+	font-weight: 600;
+	color: var(--ink-2);
+	text-align: left;
+	padding: .5rem .7rem;
+	border-bottom: 1px solid var(--rule);
+	background: var(--paper-2);
+	white-space: nowrap;
+}
+.table-scroll td {
+	padding: .55rem .7rem;
+	border-bottom: 1px solid var(--rule-soft);
+	vertical-align: top;
+}
+.table-scroll tr:last-child td { border-bottom: 0; }
+/* The claim number is the row's name; keep the digits aligned and unwrapped. */
+.table-scroll td:first-child {
+	font-family: var(--mono);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	color: var(--ink-2);
+}
+/* The number is a link to its own row, so a claim can be cited from anywhere and followed back
+   (Tom, 2026-09-12: *"potentially very embarrassing if its citation numbering doesn't call back
+   to anything"*). Underlined only on hover: 62 permanently underlined numbers down the left of a
+   long table would read as a column of broken text. */
+.table-scroll td:first-child a.rownum { color: inherit; text-decoration: none; }
+.table-scroll td:first-child a.rownum:hover,
+.table-scroll td:first-child a.rownum:focus-visible { color: var(--water); text-decoration: underline; }
+.table-scroll tr:target td { background: var(--water-soft, #eef5fb); }
+.table-scroll td:nth-child(2) { min-width: 16rem; }
+.table-scroll td:last-child { color: var(--ink-2); }
+.table-scroll code { font-size: .92em; }
+
+footer {
+	margin-top: clamp(3rem, 8vw, 5rem);
+	border-top: 1px solid var(--rule);
+	padding: 1.4rem 0 3rem;
+	font-size: .9rem;
+	color: var(--ink-2);
+}
+footer p { max-width: 72ch; }
+
+/* The three reasons for using EPANET's name, in the disclaimer box (2026-09-06). Numbered because
+   the reader is being told there are exactly three and that none is being held back; a bulleted
+   list would let the third one look like an afterthought instead of an equal. */
+.reasons {
+	margin: 0.6rem 0;
+	padding-inline-start: 1.4rem;
+}
+.reasons li {
+	margin-bottom: 0.45rem;
+}
+
+/* A qualification attached to a claim: the part that stops the claim being too flattering. Set
+   slightly quieter than the claim but NOT hidden and NOT collapsible, because on this page in
+   particular the qualification is the point. */
+.qualify {
+	display: block;
+	margin-top: 0.4rem;
+	opacity: 0.88;
+}
+
+
+/* ============================================================================
+   ONE STYLESHEET FOR THE WHOLE SITE (Tom, 2026-09-12: *"The styling on LWN
+   index.html doesn't match its other pages, and this is embarrassing. Make
+   everything match using a single css file. For what it's worth, I like the
+   style at Credits etc better than what's at index.html."*)
+
+   Four pages linked this file and three carried a <style> block of their own:
+   index 12.7 KB, features 8 KB, screenshots 6 KB. They were never a different
+   DESIGN -- every colour token was already identical, to the hex -- but they
+   were a different VOCABULARY and a different scale, so the same page
+   furniture had two names and the type grew a step when you clicked through.
+
+   WHAT THE MERGE DECIDED, and it went the way Tom said:
+     * The tokens above are the Credits ones. That means a 960px sheet where
+       the front page had 1160, and the smaller type scale. It is the look he
+       chose between the two.
+     * --font-ui / --font-cond / --font-serif were the same three faces this
+       file calls --sans / --cond / --serif. One spelling now: this file's.
+     * `header.tb`, `.tb-meta` and `footer.tb2` are GONE rather than moved.
+       They were a second chrome doing the first chrome's job, and the whole
+       complaint was that the chrome does not match. All seven pages use
+       .topbar and the plain footer.
+
+   Everything below is page furniture that genuinely belongs to one page, kept
+   in its own section so it is obvious what may be deleted with a page.
+   ========================================================================= */
+
+/* ---- THE FRONT PAGE ------------------------------------------------------
+   The hero grid, the plate and its strip, the title block, the legend, the
+   language chips, the invite and the roles. Nothing here is used elsewhere. */
+
+.hero-grid {
+	display: grid; gap: clamp(1.6rem, 4vw, 3.2rem);
+	grid-template-columns: 1fr;
+	align-items: end;
+}
+@media (min-width: 900px) {
+	.hero-grid { grid-template-columns: minmax(0, 27rem) minmax(0, 1fr); }
+}
+h1 .rule-under {
+	display: block; width: 4.2rem; height: 3px;
+	background: var(--water); margin: 1.1rem 0 0;
+}
+.lede em { font-style: italic; color: var(--water); }
+.actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.9rem; }
+/* The one button the page is FOR. Bigger than its neighbours on purpose -- a reader
+   who wants the software and not the invitation should find it without reading.
+   SIZE ONLY: it used to restate .btn's three colour declarations and its own hover, which is three
+   more places to forget when the palette moves -- and .btn-primary, deleted with them, was
+   byte-identical to plain .btn (2026-09-12). */
+.btn-go {
+	font-size: 1.22rem;
+	padding: .95rem 2.1rem;
+}
+.actions-note {
+	font-family: var(--cond);
+	text-transform: uppercase; letter-spacing: .09em;
+	/* --ink-2, not --ink-soft: the latter is defined in neither theme, and an undefined custom
+	   property on an INHERITED property falls back to the inherited value rather than erroring --
+	   so this read full-strength --ink and silently ignored the muting its own name promises.
+	   Found 2026-09-12; --ink-2 is the secondary tone every other muted line on the site uses. */
+	font-size: .82rem; color: var(--ink-2);
+	margin-top: .8rem;
+}
+.actions-note a { color: inherit; }
+/* --- the map ------------------------------------------------------------ */
+.plate {
+	border: 1px solid var(--rule);
+	background: var(--paper);
+	padding: .55rem;
+}
+/* The figure is a SLOT, and the inline SVG in it is a PLACEHOLDER for a real
+   screenshot, animated GIF or video of the app. Any of those drops straight in
+   here -- same element position, same box -- so replacing the drawing is not a
+   layout change. Requirements for the replacement asset: dev/positioning.md §9. */
+/* THREE SCREENS, ONE PLATE: the hero at full width and two supporting frames under it.
+   Two columns on anything but a narrow phone, where they stack rather than shrink to
+   illegibility -- a screenshot at a third of a phone's width says nothing. */
+/* Three since 2026-09-12, when the crowded frame took the lead slot and pushed 0028 down here.
+   `auto-fit` rather than a typed count, so the next one that arrives does not need a rule. */
+.plate-strip {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: .55rem;
+	margin-top: .55rem;
+}
+.plate-strip > img { display: block; width: 100%; height: auto; }
+@media (max-width: 560px) { .plate-strip { grid-template-columns: 1fr; } }
+.plate-cap {
+	font-family: var(--cond);
+	font-size: .82rem;
+	letter-spacing: .04em;
+	color: var(--ink-2);
+	padding: .5rem .15rem .1rem;
+	line-height: 1.5;
+}
+.plate > svg,
+.plate > img,
+.plate > video {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 760 / 430;
+	object-fit: cover;
+	background: var(--paper-2);
+}
+/* Title block, bottom-right of a real sheet. */
+.titleblock {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	border-top: 1px solid var(--rule);
+	margin-top: .55rem;
+}
+.titleblock div { padding: .5rem .7rem; border-left: 1px solid var(--rule-soft); }
+.titleblock div:first-child { border-left: 0; }
+.titleblock dt {
+	font-family: var(--cond);
+	text-transform: uppercase; letter-spacing: .12em;
+	font-size: .68rem; color: var(--ink-2); margin: 0;
+}
+.titleblock dd {
+	margin: .15rem 0 0;
+	font-family: var(--sans);
+	font-weight: 600; font-size: .9rem;
+	font-variant-numeric: tabular-nums;
+}
+.sec-head .label { white-space: nowrap; }
+/* The legend — a map has one, so the feature list is one. */
+.legend { display: grid; gap: 2.2rem; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .legend { grid-template-columns: repeat(3, 1fr); } }
+.legend article { display: flex; flex-direction: column; gap: .55rem; }
+.legend h3 { font-size: var(--step-1); font-weight: 600; }
+.legend p { margin: 0; color: var(--ink-2); }
+.swatch { width: 100%; height: 46px; border: 1px solid var(--rule); }
+/* Languages — the real list, in their own scripts. */
+.langs {
+	display: flex; flex-wrap: wrap; gap: .34rem .9rem;
+	font-size: 1.02rem; line-height: 2.05;
+	max-width: 62ch;
+}
+.langs span { color: var(--ink-2); }
+.langs span.core { color: var(--ink); }
+.two-col { display: grid; gap: 2.4rem; grid-template-columns: 1fr; }
+@media (min-width: 820px) { .two-col { grid-template-columns: 1fr 1fr; } }
+.two-col p { max-width: 60ch; }
+.two-col p:first-of-type { margin-top: 0; }
+code {
+	font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	font-size: .88em;
+	background: var(--paper-2);
+	padding: .1em .35em;
+}
+.note {
+	border-left: 2px solid var(--rule);
+	padding-left: 1.1rem;
+	color: var(--ink-2);
+	font-size: var(--step--1);
+	max-width: 58ch;
+}
+/* --- the invitation ----------------------------------------------------- */
+.invite {
+	border: 1px solid var(--pencil);
+	padding: clamp(1.8rem, 5vw, 3.2rem);
+	margin-top: clamp(3rem, 8vw, 5.6rem);
+	display: grid; gap: 1.4rem;
+}
+.invite h2 { font-size: var(--step-2); font-weight: 600; }
+.invite .label { color: var(--pencil); }
+.invite p { margin: 0; max-width: 56ch; }
+/* The invitation's two asks are GHOSTS, and the bespoke override they used to have was a bug.
+   It set a pencil border and pencil TEXT and never cleared .btn's `background: var(--water)`, so
+   pencil sat on a water plate at a measured 1.22:1 -- which is what Tom saw and called painful
+   (2026-09-12). Its own hover rule gave the intent away: a transparent resting state.
+   Reusing .btn-ghost rather than re-clearing the background by hand, so there is one outline
+   button on this page and this rule only says which colour it wears here. Write-to-us and
+   open-an-issue are a matched, equal-weight pair, and the page's real primary calls ("Start a
+   model now", "Open the app") should not have to compete with them.
+   Pencil on paper measures 5.88:1 at rest and 5.96:1 on hover -- both clear AA. */
+.invite .btn-ghost { color: var(--pencil); border-color: var(--pencil); }
+.invite .btn-ghost:hover, .invite .btn-ghost:focus-visible {
+	background: var(--pencil); color: var(--paper); border-color: var(--pencil);
+}
+/* The four kinds of person, inside the invitation box. Two up, because the
+   ask is the page's subject and each one needs a sentence, not a caption. */
+.roles { display: grid; gap: 1.7rem 2.2rem; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .roles { grid-template-columns: 1fr 1fr; } }
+.roles h3 { font-size: var(--step-1); font-weight: 600; margin-bottom: .45rem; }
+.roles p { margin: 0; color: var(--ink-2); }
+/* The second hero paragraph — the ask itself, under the tagline. */
+.lede-2 { max-width: 42ch; margin: 1.1rem 0 0; color: var(--ink-2); }
+.lede-2 strong { color: var(--pencil); }
+footer a { color: var(--ink-2); }
+footer a:hover { color: var(--water); }
+/* Water moves. One motion idea, and it is the subject. */
+@media (prefers-reduced-motion: no-preference) {
+	.flow { animation: flow 2.6s linear infinite; }
+}
+@keyframes flow { to { stroke-dashoffset: -18; } }
+
+/* ---- THE FEATURE LIST ----------------------------------------------------
+   The section index, the count line, and the single-column table the list is
+   drawn as. `.dek`, `.standfirst` and `.level` are shared with the screenshot
+   gallery and are defined here, once, because this page is built first. */
+
+.dek { font-size: var(--step-1); color: var(--ink-2); max-width: 60ch; margin: 0 0 12px; line-height: 1.45; }
+.standfirst { max-width: 66ch; margin: 0 0 34px; }
+/* ---- the count line and the section index ---- */
+.count {
+	font-family: var(--cond);
+	font-weight: 600; font-size: var(--step--1);
+	letter-spacing: .12em; text-transform: uppercase;
+	color: var(--ink-2); margin: 0 0 14px;
+}
+.count a { color: var(--water); }
+.jump {
+	display: flex; flex-wrap: wrap; gap: 8px 22px;
+	font-family: var(--cond);
+	font-weight: 600; font-size: var(--step--1);
+	letter-spacing: .1em; text-transform: uppercase;
+	border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+	padding: 12px 0; margin: 0 0 10px;
+}
+.jump a { color: var(--water); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { text-decoration: underline; }
+/* ---- a section of the list ---- */
+section.act > h2 {
+	font-family: var(--cond);
+	font-weight: 600; font-size: var(--step--1);
+	letter-spacing: .16em; text-transform: uppercase;
+	color: var(--water); margin: 46px 0 0;
+	padding-bottom: 7px; border-bottom: 1px solid var(--rule);
+	scroll-margin-top: 18px;
+}
+section.act > h2 .ct { color: var(--ink-2); float: right; letter-spacing: .06em; }
+/* ONE COLUMN, ONE FEATURE PER ROW (Tom, 2026-09-12). This was a two-column list, and two
+   columns are what made 37 one-sentence rows read as a sprawl -- the eye has to find where the
+   left column ends and the right begins, once per section. A table row spans the measure, the
+   rule under it runs the full width, and the order down the page is the order it is written in.
+   `max-width` is on the cell's text, not on the row, so the rules stay flush. */
+table.feats {
+	width: 100%; border-collapse: collapse;
+	margin: 0; table-layout: fixed;
+}
+table.feats td {
+	padding: 13px 0 13px 22px;
+	border-bottom: 1px solid var(--rule-soft);
+	position: relative;
+	text-align: left; vertical-align: top;
+	hyphens: none; overflow-wrap: break-word;
+}
+/* The drafting tick. A red pencil mark against each line, the way somebody
+   checking a drawing marks off what they have verified. */
+table.feats td::before {
+	content: ""; position: absolute; left: 0; top: 1.28em;
+	width: 9px; height: 9px;
+	border-left: 2px solid var(--pencil); border-bottom: 2px solid var(--pencil);
+	transform: rotate(-45deg) translateY(-2px);
+}
+table.feats code {
+	font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+	font-size: .88em; background: var(--water-soft);
+	padding: .05em .32em; border-radius: 2px;
+}
+/* ---- the honest footer ---- */
+.level {
+	border: 1px solid var(--rule); border-left: 3px solid var(--pencil);
+	background: var(--paper-2); border-radius: 0 2px 2px 0;
+	padding: 20px 24px; margin: 56px 0 0;
+	scroll-margin-top: 18px;
+}
+.level h2 {
+	font-family: var(--sans);
+	font-weight: 600; font-size: var(--step-1); margin: 0 0 10px;
+}
+.level p { max-width: 66ch; margin: 0 0 12px; }
+.level p:last-child { margin-bottom: 0; }
+.level a { color: var(--water); }
+/* ---- the one thing to do next ---- */
+.go { margin: 40px 0 0; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+/* border-color stated rather than inherited: .btn's border is --water-fill now, which is a dark
+   blue and all but invisible against a dark page. An outline button's outline is TEXT-weight. */
+.btn-ghost { background: transparent; color: var(--water); border-color: var(--water); }
+.btn-ghost:hover, .btn-ghost:focus-visible { background: var(--water-soft); border-color: var(--water); color: var(--water); }
+
+/* ---- THE SCREENSHOT GALLERY ----------------------------------------------
+   A plate is one frame with its heading, caption, numbered figcaption and the
+   note under it. `.plate.tall` is the phone shot, which is sized to its own
+   width and centred rather than run to the measure. */
+
+/* ---- section ---- */
+section.act { margin: 0 0 26px; }
+.act > h2 {
+	font-family: var(--cond);
+	font-weight: 600; font-size: var(--step--1);
+	letter-spacing: .16em; text-transform: uppercase;
+	color: var(--water); margin: 46px 0 0;
+	padding-bottom: 7px; border-bottom: 1px solid var(--rule);
+}
+/* ---- plate: one screenshot and its annotation ---- */
+figure.plate { margin: 30px 0 0; }
+.plate h3 {
+	font-family: var(--sans);
+	font-weight: 600; font-size: var(--step-1); letter-spacing: -.012em;
+	margin: 0 0 6px; text-wrap: balance;
+}
+.plate .cap {color: var(--ink-2); margin: 0 0 16px; max-width: 68ch; }
+.plate .shot {
+	border: 1px solid var(--rule); background: var(--paper-2);
+	padding: 6px; border-radius: 2px;
+}
+.plate img { display: block; width: 100%; height: auto; border-radius: 1px; }
+/* A phone capture is 1080 x 2061 -- portrait. At the sheet's full width it would stand two
+   screens tall and read as a poster rather than as a phone, so it is held to roughly a phone's
+   own width and centred. The frame around it is the same .shot border every other plate uses. */
+.plate.tall .shot { max-width: 330px; margin-left: auto; margin-right: auto; }
+.plate figcaption {
+	display: flex; flex-wrap: wrap; gap: 6px 18px;
+	font-family: var(--cond);
+	font-weight: 500; font-size: var(--step--1);
+	letter-spacing: .08em; text-transform: uppercase;
+	color: var(--ink-2); margin-top: 9px;
+}
+.plate figcaption .n {color: var(--water); }
+.plate .note { max-width: 68ch; margin: 14px 0 0; }
+
+/* ---- YOU ARE HERE --------------------------------------------------------
+   `aria-current="page"` is the whole marker: it is what a screen reader
+   announces and what this rule colours, so the fact is stated once rather
+   than as an attribute and a class that can disagree. The bar is generated by
+   tools/build-chrome.php and is identical on all seven pages. */
+.topbar nav a[aria-current="page"] {
+	color: var(--ink);
+	font-weight: 700;
+	box-shadow: inset 0 -2px 0 var(--pencil);
+}
+
+/* The front page's own section index. Same component as the feature list's,
+   and deliberately NOT the site bar: a strip that mixes "leave this page"
+   with "scroll this page" cannot tell a reader which a link will do. */
+.jump { margin-top: 1.1rem; }
+
+/* ==========================================================================
+   EPANET++ additions. Everything above this line is LibreWaterNet.org's stylesheet,
+   copied whole (same author, same GPL v3+ licence), so the two sites read as one family.
+   ========================================================================== */
+.wordmark .pp { color: var(--water); letter-spacing: 0; }
+/* Tom's headline is a sentence, not a slogan, so it is set a step down from a slogan's h1. */
+h1.h1-long { font-size: clamp(1.3rem, 1.1rem + .8vw, 1.75rem); line-height: 1.22; max-width: 34ch; }
+.hero-grid { align-items: start; }
+.hero .lede { font-size: var(--step-0); }
+.plainlist { max-width: 60ch; margin: .4rem 0 1rem; padding-left: 1.2rem; }
+.plainlist li { margin: 0 0 .35rem; }
+.adds { display: grid; gap: 1.7rem 2.2rem; grid-template-columns: 1fr; margin: 0 0 1.6rem; }
+@media (min-width: 760px) { .adds { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .adds { grid-template-columns: repeat(3, 1fr); } }
+.adds h3 { font-size: var(--step-1); font-weight: 600; margin-bottom: .45rem; }
+.adds p { margin: 0; color: var(--ink-2); }

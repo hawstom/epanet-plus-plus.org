@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Credits</title>
+<meta name="description" content="The people and institutions whose work EPANET++ stands on.">
+<link rel="canonical" href="https://epanet-plus-plus.org/credits.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EPANET++">
+<meta property="og:url" content="https://epanet-plus-plus.org/credits.html">
+<meta property="og:title" content="Credits">
+<meta property="og:description" content="The people and institutions whose work EPANET++ stands on.">
+<meta property="og:image" content="https://epanet-plus-plus.org/img/0082.png">
+<meta property="og:image:width" content="1921">
+<meta property="og:image:height" content="920">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<!-- BEGIN GENERATED CHROME -->
+	<div class="marks">
+		<a class="wordmark" href="index.html">EPANET<span class="pp">++</span></a>
+	</div>
+	<nav>
+		<a href="index.html">Front page</a>
+		<a href="features.html">Feature list</a>
+		<a href="screenshots.html">Screenshots</a>
+		<a href="credits.html" aria-current="page">Credits</a>
+		<a href="disclosures.html">Disclosures</a>
+		<a href="citations.html">Citations</a>
+		<a href="https://hawsedc.com/engcalcs/contact.php">Contact</a>
+	</nav>
+	<!-- END GENERATED CHROME -->
+</header>
+
+<!-- MIRRORED from LibreWaterNet.org's credits.html, rebranded; every change is listed in CLAIMS.md. -->
+<!-- epanet-js IS NAMED HERE, in the software list, as on LibreWaterNet.org (EngCalcs positioning.md
+     section 1, the second exception, 2026-09-06). Tom's Q4 of 2026-09-27 kept it off the FRONT page;
+     it is nowhere else on this site. If he rules it off the whole site, credit it here by license,
+     author and function instead. -->
+<main>
+
+<div class="hero">
+	<span class="label">Almost none of this is ours</span>
+	<h1>Credits<span class="rule-under"></span></h1>
+	<p class="lede">A list of the people and institutions whose work we are standing on, with
+	enough detail that you can go and read about them rather than take our word for it. We owe EPANET
+	the largest debt of all; it has <a href="epanet.html">a page of its own</a>.</p>
+</div>
+
+<section>
+
+	<div class="item">
+		<h3>The United States government, and the people who fund it</h3>
+		<p>EPANET was paid for by American taxpayers and given to the world for nothing.
+		Under <a href="https://uscode.house.gov/view.xhtml?req=%28title%3A17+section%3A105+edition%3Aprelim%29">17
+		U.S.C. &sect; 105</a>, a work prepared by a federal officer or employee as part of their
+		duties cannot be copyrighted. So EPANET has no owner to ask, no fee and no permission to
+		seek: it is public domain in the United States by operation of law, and distributed to the
+		world on that basis.</p>
+		<p>That is an extraordinary thing to have done, and it is a gift rather than a
+		background condition. A working engineer anywhere on earth, in a country
+		that pays no American taxes, can model a water system tonight because of a decision made
+		in a United States federal agency.</p>
+	</div>
+
+	<div class="item">
+		<h3>The Environmental Protection Agency, and Lewis A. Rossman</h3>
+		<p>EPANET was created by Lewis A. Rossman for the EPA's water research program and
+		first appeared in 1993, alongside a formal report on the EPANET water quality model.
+		EPANET 2 followed, and version 2.2 was the last release EPA itself made. It is used
+		by utilities, consultants, regulators, and universities worldwide, and its computational
+		engine sits underneath a great many other products, ours among them.</p>
+		<p>We have never contacted the EPA and we are not asking them to notice us. The
+		gratitude is stated here, publicly, because that is the only form of thanks a public-domain
+		gift admits of.</p>
+	</div>
+
+	<div class="item">
+		<h3>Open Water Analytics</h3>
+		<p>EPANET's development continued in the open after EPA's 2.2, as a community effort in
+		collaboration with EPA. Open Water Analytics released EPANET 2.3 on 2024-07-17 and 2.3.5
+		on 2025-02-20. <b>2.3.5 is the engine our software runs.</b> Every volunteer who
+		has filed an issue or a fix in that repository has, without knowing it, fixed something
+		for us.</p>
+	</div>
+
+	<div class="item">
+		<h3>Everybody who extended EPANET before we did</h3>
+		<p>For thirty years, people have been wrapping, porting, rebuilding, teaching and
+		arguing about this engine, mostly for nothing and mostly on their own time. The
+		graphical front ends, free and commercial. The hydraulic solver. The university courses
+		that taught a generation to read an <code>.inp</code> file. The people answering the
+		same file-format question in public for the tenth year running.</p>
+
+		<p>We mention them together because the list is longer than we know and we would get it
+		wrong. What we can say is what it cost them and what it cost us: they did that work
+		before the age of AI, in evenings and weekends and unpaid hours, and it is what made it
+		possible for one semi-retired engineer with an AI to build this. That is not a boast
+		about us. It is the measure of what they left lying around for somebody to pick up, and
+		the reason the polite thing to do with it is to give ours away too.</p>
+	</div>
+
+	<div class="item">
+		<h3>The software and services we depend on</h3>
+		<p>These are the third-party pieces the network editor uses. The first four are
+		vendored, meaning a copy travels with the software rather than being fetched from
+		somebody else's server while you work.</p>
+		<ul class="facts">
+			<li><b>epanet-js, the browser build of the EPANET engine.</b> MIT licensed,
+			&copy; Luke Butler, wrapping the MIT-licensed OWA-EPANET engine and compiling it to
+			WebAssembly. It is the single piece of code that makes an EPANET run possible inside a
+			web page with no server, and it is the reason this project could be built by one
+			semi-retired engineer rather than by a team.</li>
+			<li><b>Bootstrap 5.3.2</b>, MIT licensed, &copy; 2011-2023 The Bootstrap Authors.
+			The layout this software is built on.</li>
+			<li><b>Color schemes for maps</b>, Apache License 2.0, &copy; 2002 Cynthia Brewer,
+			Mark Harrower, and The Pennsylvania State University.
+			See the Cynthia Brewer entry below.</li>
+			<li><b>viridis, magma, inferno, and plasma</b>, released CC0 by Nathaniel J. Smith,
+			Stefan van der Walt, and (for viridis) Eric Firing.
+			<a href="https://github.com/BIDS/colormap">github.com/BIDS/colormap</a></li>
+		</ul>
+		<p>And two services the editor can call out to over the network. The street map shows
+		on the first, empty project; everything else from them is off until you turn it on, and a
+		place-name search and a ground elevation lookup each ask their own permission. A tile
+		request tells that service where you are looking:</p>
+		<ul class="facts">
+			<li><b>OpenStreetMap contributors</b>, whose map of the world is the ground under a
+			geographic project, and whose Nominatim service answers a place-name search.
+			Map data &copy; OpenStreetMap contributors.</li>
+			<li><b>Mapbox</b>, for satellite imagery and for the terrain elevation data a node can
+			read its ground level from.</li>
+		</ul>
+	</div>
+
+	<div class="item">
+		<h3>Cynthia Brewer, and the people who made maps readable</h3>
+		<p>A network map is worth nothing if a reader cannot tell the classes apart, and much of
+		the work of making that possible was done by cartographers rather than by engineers.
+		Cynthia Brewer, a geographer at Penn State, published her color scheme advice in 2002
+		with Mark Harrower and Penn State. The schemes are designed per class count and tested for
+		photocopying, for projection and for color-blind readers, which is why a five-class
+		pressure map is legible at all. The International Cartographic Association gave her the
+		Carl Mannerfelt Gold Medal in 2023.</p>
+		<p>Her schemes ship in our software under the Apache License 2.0, which fixes the wording
+		of the acknowledgement below. It is the license's text, not ours:</p>
+		<div class="finewords">
+			<p>This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).</p>
+		</div>
+	</div>
+
+	<div class="item">
+		<h3>EPANET's own interface</h3>
+		<p>It is customary in this field to describe EPANET's user interface as dated. We decline
+		to. It is the interface that taught most working modelers what a network model is, and
+		ours is informed by it deliberately, item by item, as the
+		first of our <a href="disclosures.html">disclosures</a> says.</p>
+	</div>
+
+	<div class="item">
+		<h3>Richard M. Stallman, and the Free Software Foundation</h3>
+		<p>The Free Software Foundation released version 3 of the GNU General Public License on
+		2007-06-29. It is what our software is published under, and the instrument by which what
+		we publish stays published. We did not have to design that mechanism; somebody else spent
+		decades on it and gave it away too. Whether it is the right choice for a project this
+		dependent on public-domain work is an open question, and the second of our
+		<a href="disclosures.html">disclosures</a> is where we admit it.</p>
+	</div>
+
+	<div class="item">
+		<h3>And the people whose names we do not have</h3>
+		<p>The engineers who published Net1, Net2, and Net3 as example networks, which is what
+		anybody testing an EPANET-compatible program checks against first. Everyone who has ever
+		answered a question about the file format in public. Anyone who has reported a bug to us,
+		or corrected a translation, in any of 27 languages. If your work is in here and your name
+		is not, that is our failing and we would like to fix it.</p>
+	</div>
+</section>
+
+</main>
+
+<footer>
+	<p><b>Not the EPA&rsquo;s.</b> This site is not affiliated with, endorsed by, or sponsored by the
+	United States Environmental Protection Agency. EPANET is a public-domain program of the US EPA.
+	EPANET++ is not EPANET.</p>
+	<p>This page makes no request to any other server: no fonts, no scripts, no images from
+	elsewhere, no analytics, no cookies, and no storage on your device.</p>
+	<p><a href="index.html">Back to the front page</a> &middot;
+	<a href="citations.html">Every claim, with its source</a></p>
+</footer>
+
+</div>
+</body>
+</html>

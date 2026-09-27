@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>EPANET++ · the EPANET engine, extended</title>
+<meta name="description" content="A free, GPL-licensed water network editor built on the EPANET engine, extended with scenarios, a world map, fire flow, customers, custom properties, and asset libraries. Not EPANET, and not affiliated with the EPA.">
+<link rel="canonical" href="https://epanet-plus-plus.org/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EPANET++">
+<meta property="og:url" content="https://epanet-plus-plus.org/">
+<meta property="og:title" content="EPANET++ · the EPANET engine, extended">
+<meta property="og:description" content="A free, GPL-licensed water network editor built on the EPANET engine, extended with scenarios, a world map, fire flow, customers, custom properties, and asset libraries. Not EPANET, and not affiliated with the EPA.">
+<meta property="og:image" content="https://epanet-plus-plus.org/img/0082.png">
+<meta property="og:image:width" content="1921">
+<meta property="og:image:height" content="920">
+<meta property="og:image:alt" content="One browser window showing a water network on a street map with the Settings box, the Libraries box, a fire flow analysis, a pump energy report, a scenario comparison and a hydraulic profile all open over it.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css">
+<style>
+	/* The legend swatches: five steps of one blue ramp, drawn in CSS (LibreWaterNet drew them in
+	   script; there is no script on this site). */
+	#sw-draw    { background: linear-gradient(90deg, #9EC3E3, #6FA8DC, #4E8BC9, #2E6FB0, #1B5FA8); }
+	#sw-solve   { background: linear-gradient(90deg, #9EC3E3, #6FA8DC, #4E8BC9, #2E6FB0, #1B5FA8); }
+	#sw-publish { background: linear-gradient(90deg, #9EC3E3, #6FA8DC, #4E8BC9, #2E6FB0, #1B5FA8); }
+</style>
+</head>
+<body>
+
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<!-- BEGIN GENERATED CHROME -->
+	<div class="marks">
+		<a class="wordmark" href="index.html">EPANET<span class="pp">++</span></a>
+	</div>
+	<nav>
+		<a href="index.html" aria-current="page">Front page</a>
+		<a href="features.html">Feature list</a>
+		<a href="screenshots.html">Screenshots</a>
+		<a href="credits.html">Credits</a>
+		<a href="disclosures.html">Disclosures</a>
+		<a href="citations.html">Citations</a>
+		<a href="https://hawsedc.com/engcalcs/contact.php">Contact</a>
+	</nav>
+	<!-- END GENERATED CHROME -->
+</header>
+<nav class="jump" aria-label="Sections of this page">
+	<a href="#adds">What the ++ adds</a>
+	<a href="#engine">What is EPANET&rsquo;s</a>
+	<a href="#what">What exists</a>
+	<a href="#languages">Languages</a>
+	<a href="#stakeholders">Who we need</a>
+	<a href="#license">License</a>
+</nav>
+
+<main>
+
+	<div class="hero">
+		<div class="hero-grid">
+			<div>
+				<p class="label">The EPANET engine, extended</p>
+				<!-- HEADLINE AND LEDE ARE TOM'S WORDING, VERBATIM (2026-09-27). Do not edit a word of
+				     either without his ruling. The sentence "We are still finding out what EPANET can
+				     do that we cannot, and we say so." was REMOVED on his instruction; do not restore
+				     it. See CLAIMS.md section 1. -->
+				<h1 class="h1-long">EPANET++: scenarios, world map, fire flow, customers, custom properties, and asset libraries, given to the world on the same engine EPA gave the world.<span class="rule-under"></span></h1>
+				<p class="lede">EPANET++ is a free libre open-source water network editor built on the EPANET engine itself, the same solver the U.S. Environmental Protection Agency wrote and gave away, extended with scenarios, world map, fire flow, customers, custom properties, and asset libraries you can import across projects. It is not EPANET, and it is not affiliated with or endorsed by the EPA; it is one of many tools built on public-domain software EPA released to everyone.</p>
+				<div class="actions">
+					<a class="btn btn-go" data-app="" href="https://librewaternet.org/app/">Open the network editor</a>
+					<a class="btn btn-ghost" href="screenshots.html">See it working</a>
+				</div>
+				<p class="actions-note">Free, no sign-up, runs in your browser &middot; <a data-app="?lpn_examples=1" href="https://librewaternet.org/app/?lpn_examples=1">Open an example</a> &middot; <a href="features.html">The whole feature list</a></p>
+			</div>
+
+			<div>
+				<!-- THE DISCLAIMER IS ON THE FIRST SCREEN (dev/epanet-plus-plus-plan.md in EngCalcs):
+				     "++" is a bolder typographic claim than "Not EPANET" and invites the affiliation
+				     question harder. Adapted from not-epanet.org's model paragraph. It heads the right
+				     column so it is above the fold on a desktop; on a phone it follows the buttons, below
+				     a lede that already says "It is not EPANET". -->
+				<div class="disclaimer" style="margin:0 0 1.4rem">
+					<span class="label">Please read this first</span>
+					<p><b>EPANET is a program of the United States Environmental Protection Agency.</b>
+					This website is not EPA&rsquo;s. EPANET++ is not EPANET, is not a version of EPANET,
+					and is not an official successor to EPANET. EPA has not reviewed, endorsed, approved,
+					sponsored, or been asked about any of this. If you came looking for EPANET itself, get
+					it from the agency that made it:
+					<a href="https://www.epa.gov/water-research/epanet">epa.gov/water-research/epanet</a>.</p>
+				</div>
+
+			<figure class="plate" style="margin:0">
+				<img src="img/0082.png" alt="One browser window showing a water network on a street map with the Settings box, the Libraries box, a fire flow analysis, a pump energy report, a scenario comparison and a hydraulic profile all open over it." width="1921" height="920" decoding="async">
+				<div class="plate-strip">
+					<img src="img/0028.png" alt="A water network on a street map of Novato, California, colored by pressure, with a hydraulic profile along a chosen path in the pane beneath it." width="1922" height="918" loading="lazy" decoding="async">
+					<img src="img/0007.png" alt="A water network drawn over a site plan with hand-placed labels, leader lines and a title block." width="1917" height="919" loading="lazy" decoding="async">
+					<img src="img/0026.png" alt="The same software with its entire interface in Romanian." width="1917" height="919" loading="lazy" decoding="async">
+				</div>
+				<figcaption class="plate-cap">Settings, Libraries, fire flow, pump energy, scenarios, tables and a profile, all open on one network &middot;
+					EPA&rsquo;s Net3 on real streets &middot; a design drawing on a site plan &middot; the interface in Romanian &middot;
+					<a href="screenshots.html">all fifteen, annotated</a></figcaption>
+				<dl class="titleblock">
+					<div><dt>Network</dt><dd>EPA Net3</dd></div>
+					<div><dt>Junctions</dt><dd>92</dd></div>
+					<div><dt>Engine</dt><dd>EPANET</dd></div>
+					<div><dt>License</dt><dd>GPL v3+</dd></div>
+				</dl>
+			</figure>
+			</div>
+		</div>
+	</div>
+
+	<section id="adds">
+		<div class="sec-head">
+			<span class="label">What the ++ adds</span>
+			<h2>Six things built on top of the engine</h2>
+		</div>
+		<!-- EACH OF THESE IS A STATEMENT ABOUT US, NEVER ABOUT WHAT EPANET LACKS. Tom struck a
+		     "not downstream of EPANET" list once already for naming things EPANET does have. Say
+		     what we built and stop. -->
+		<div class="adds">
+			<article>
+				<h3>Scenarios</h3>
+				<p>One network, many cases. A scenario holds only its differences from the base model, so
+				fixing a base asset fixes it in every scenario, and a comparison report sets the scenarios
+				side by side.</p>
+			</article>
+			<article>
+				<h3>World map</h3>
+				<p>Draw on a street map or satellite imagery, or keep your own coordinates and your own
+				backdrop. A wizard moves an existing model onto the map, and nothing is converted until
+				you confirm.</p>
+			</article>
+			<article>
+				<h3>Fire flow</h3>
+				<p>A whole-system fire flow analysis: for every junction, whether the required fire flow
+				can be met, and which failure it runs into when it cannot, including the pressure it pulls
+				down elsewhere in the network.</p>
+			</article>
+			<article>
+				<h3>Customers</h3>
+				<p>Metered services as elements of their own, each with its demand, service count, and
+				pattern, connected by a line you can drag to the node or pipe that serves it.</p>
+			</article>
+			<article>
+				<h3>Custom properties</h3>
+				<p>Add your own fields to any kind of asset, with a label and limits. They appear beside
+				the built-in fields, a scenario can override them, and a value outside its own limits is
+				flagged where it stands rather than cleared.</p>
+			</article>
+			<article>
+				<h3>Asset libraries</h3>
+				<p>Pipe types, fittings, curves, patterns, controls, and rules, each defined once and
+				referred to by name. Edit a pipe type and every pipe using it follows. Import whole
+				libraries from another project file.</p>
+			</article>
+		</div>
+		<p class="note">All of it is free, including the parts that are normally the paid tier.</p>
+	</section>
+
+	<section id="engine">
+		<div class="sec-head">
+			<span class="label">What is EPANET&rsquo;s</span>
+			<h2>Underneath, the engine is EPANET&rsquo;s</h2>
+		</div>
+		<div class="two-col">
+			<div>
+				<p>The solver is OWA-EPANET 2.3.5, the open continuation of EPA&rsquo;s EPANET, compiled
+				to run inside your browser. Extended-period runs, water quality, pump energy, rule-based
+				controls, and the valves that set their own position all go through it. A small solver of
+				our own answers a single instant, pressures and flows only.</p>
+			</div>
+			<div>
+				<p>The file format is EPANET&rsquo;s too. EPANET++ reads and writes the <code>.inp</code>
+				file, and a value you did not edit comes back out character for character. The words are
+				EPANET&rsquo;s: junction, reservoir, tank, pipe, pump, valve, pattern, curve, control, and
+				rule. And the answers are checked against EPA&rsquo;s own published report for its Net3
+				example. The details are on the <a href="disclosures.html">Disclosures</a> page.</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="what">
+		<div class="sec-head">
+			<span class="label">What exists today</span>
+			<h2>It is not a proposal. It runs, the screenshots are real, and it&rsquo;s waiting for your feature request.</h2>
+		</div>
+		<div class="legend">
+			<article>
+				<div class="swatch" id="sw-draw"></div>
+				<h3>Draw</h3>
+				<p>Junctions, reservoirs, tanks, pipes, pumps, valves, customers, and annotation text,
+				placed on your own XY system or on a latitude and longitude map with street or satellite
+				view. Open an EPANET <code>.inp</code> file and it tells you every difference it found
+				rather than ignoring anything quietly.</p>
+			</article>
+			<article>
+				<div class="swatch" id="sw-solve"></div>
+				<h3>Solve</h3>
+				<p>Solve one moment, or run an extended period with demand patterns, controls, and tanks
+				that fill and drain, played back step by step. The same run answers water quality
+				questions (how old the water is, how much came from a source you name, how a residual
+				decays) and says how long each pump ran and what its energy cost. Color the map by
+				pressure, flow, velocity, or head loss.</p>
+			</article>
+			<article>
+				<div class="swatch" id="sw-publish"></div>
+				<h3>Label</h3>
+				<p>Labels you control. Drag one where you want it, set what it says, and it stays there,
+				with leader lines that follow. What leaves the screen is a screen capture; what the
+				lettering saves you is redrawing the map by hand in a drawing program.</p>
+			</article>
+		</div>
+		<div class="actions" style="margin-top:2.2rem">
+			<a class="btn" data-app="" href="https://librewaternet.org/app/">Open the network editor</a>
+			<a class="btn btn-ghost" href="features.html">The whole feature list</a>
+			<a class="btn btn-ghost" href="https://github.com/hawstom/engcalcs">Read the source</a>
+		</div>
+		<p class="note" style="margin-top:1.6rem">A run over time goes through the EPANET engine; the
+		built-in solver has no time dimension. And although you of course prefer working on your PC, it
+		works also on a phone in tall mode.</p>
+	</section>
+
+	<section id="languages">
+		<div class="sec-head">
+			<span class="label">27 languages</span>
+			<h2>Everybody everywhere is the aim</h2>
+		</div>
+		<div class="two-col">
+			<div>
+				<p class="langs">
+					<span class="core">English</span>
+					<span class="core">Español</span>
+					<span class="core">Português</span>
+					<span class="core">Français</span>
+					<span class="core">Türkçe</span>
+					<span>Deutsch</span>
+					<span>Italiano</span>
+					<span>Русский</span>
+					<span>Українська</span>
+					<span>中文</span>
+					<span>हिन्दी</span>
+					<span>বাংলা</span>
+					<span>العربية</span>
+					<span>فارسی</span>
+					<span>עברית</span>
+					<span>اردو</span>
+					<span>پښتو</span>
+					<span>Bahasa Indonesia</span>
+					<span>Kiswahili</span>
+					<span>አማርኛ</span>
+					<span>ភាសាខ្មែរ</span>
+					<span>မြန်မာ</span>
+					<span>Български</span>
+					<span>Čeština</span>
+					<span>Hrvatski</span>
+					<span>Română</span>
+					<span>Srpski</span>
+				</p>
+			</div>
+			<div>
+				<p>The network editor is translated into all twenty-seven, in the program itself: the
+				labels, the tooltips, and the warnings. This welcome page is in English, and your browser
+				has translated it if you are reading it in another language.</p>
+				<p>The translations are AI-made, term by term against a hydraulics glossary, and corrected
+				as people report what reads wrong. The quality of each language is recorded openly.
+				Right-to-left languages lay out right-to-left. If your language is here and reads badly,
+				that is a bug report we want.</p>
+			</div>
+		</div>
+	</section>
+
+	<section id="stakeholders" class="invite">
+		<span class="label">Looking for stakeholders, not for money</span>
+		<h2>Four kinds of person we are looking for</h2>
+		<p>There is nothing to buy here and no donation button. We are asking for your time, your
+		judgment, your experience, the bug you hit, and the thing you need it to do next.</p>
+		<div class="roles">
+			<article>
+				<h3>Advisors</h3>
+				<p>How should a piece of software be owned by the people who depend on it? We have not
+				decided that yet, and there is no foundation or governing document; that is why we are
+				asking before writing one.</p>
+			</article>
+			<article>
+				<h3>Bug reports</h3>
+				<p>The most useful thing anyone sends us is a network that behaves in a way you did not
+				expect. Send the model and what you expected; that is a complete report.</p>
+			</article>
+			<article>
+				<h3>Power users with wish lists</h3>
+				<p>People who model networks all day know what is missing better than we do. Tell us what
+				you need it to do, in the order you need it.</p>
+			</article>
+			<article>
+				<h3>Non-profit directors</h3>
+				<p>Water systems get designed and run by organizations without a software budget. If that
+				is you, we want to hear what stands between your engineers and a model they can use.</p>
+			</article>
+		</div>
+		<div class="actions" style="margin-top:.4rem">
+			<a class="btn btn-ghost" href="https://hawsedc.com/engcalcs/contact.php">Write to us</a>
+			<a class="btn btn-ghost" href="https://github.com/hawstom/engcalcs">Open an issue on GitHub</a>
+		</div>
+	</section>
+
+	<section id="license">
+		<div class="sec-head">
+			<span class="label">License</span>
+			<h2>Yours to keep</h2>
+		</div>
+		<div class="two-col">
+			<div>
+				<p>The software is <strong>GNU GPL v3 or later</strong>. There is no paid tier, no free
+				tier that can be taken away later, and no waiting period before the source is yours. Fork
+				it, run it on your own server, teach from it, ship it inside something else that is also
+				free.</p>
+				<p class="note">That is a restriction EPA did not impose on EPANET, and the
+				<a href="disclosures.html#less-free">Disclosures</a> page says so.</p>
+			</div>
+			<div>
+				<p><strong>Your model stays on your machine.</strong> Every calculation runs in your own
+				browser; nothing you draw is uploaded unless you turn on a feature that needs it. There is
+				no account to make. Install it and it keeps working with the network cable out.</p>
+				<p class="note"><strong>Four features reach another server.</strong> The street map shows
+				on the first, empty project. The other three are off until you turn them on:</p>
+				<ul class="plainlist">
+					<li>Street map tiles, from OpenStreetMap.</li>
+					<li>Satellite tiles, from Mapbox.</li>
+					<li>Place-name search, which sends what you typed to OpenStreetMap&rsquo;s geocoder.</li>
+					<li>Ground elevations, which send the coordinates of your nodes to Mapbox.</li>
+				</ul>
+				<p class="note">The last two ask a consent question of their own.</p>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+	<footer>
+		<p><b>Not the EPA&rsquo;s.</b> This site is not affiliated with, endorsed by, or sponsored by
+		the United States Environmental Protection Agency. EPANET is a public-domain program of the US
+		EPA. EPANET++ is not EPANET.</p>
+		<p>EPANET++: free libre open source water network modeling on the EPANET engine. GPL v3 or
+		later. Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+		contributors. Satellite imagery &copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>.</p>
+		<p>This page makes no request to any other server: no fonts, no scripts, no images from
+		elsewhere, no analytics, no cookies, and no storage on your device.</p>
+		<p><a href="citations.html">Every claim, with its source</a></p>
+	</footer>
+</div>
+
+
+</body>
+</html>

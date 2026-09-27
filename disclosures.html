@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Disclosures</title>
+<meta name="description" content="Five things a reasonable person would want to know before trusting EPANET++.">
+<link rel="canonical" href="https://epanet-plus-plus.org/disclosures.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EPANET++">
+<meta property="og:url" content="https://epanet-plus-plus.org/disclosures.html">
+<meta property="og:title" content="Disclosures">
+<meta property="og:description" content="Five things a reasonable person would want to know before trusting EPANET++.">
+<meta property="og:image" content="https://epanet-plus-plus.org/img/0082.png">
+<meta property="og:image:width" content="1921">
+<meta property="og:image:height" content="920">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<!-- BEGIN GENERATED CHROME -->
+	<div class="marks">
+		<a class="wordmark" href="index.html">EPANET<span class="pp">++</span></a>
+	</div>
+	<nav>
+		<a href="index.html">Front page</a>
+		<a href="features.html">Feature list</a>
+		<a href="screenshots.html">Screenshots</a>
+		<a href="credits.html">Credits</a>
+		<a href="disclosures.html" aria-current="page">Disclosures</a>
+		<a href="citations.html">Citations</a>
+		<a href="https://hawsedc.com/engcalcs/contact.php">Contact</a>
+	</nav>
+	<!-- END GENERATED CHROME -->
+</header>
+
+<!-- MIRRORED from LibreWaterNet.org's disclosures.html, rebranded; every change is listed in CLAIMS.md. -->
+<main>
+
+<div class="hero">
+	<span class="label">Before you trust it</span>
+	<h1>Disclosures<span class="rule-under"></span></h1>
+	<p class="lede">Five things a reasonable person would want to know before trusting a piece of engineering software. Every one of them is backed row by row on the <a href="citations.html">Citations</a> page.</p>
+</div>
+
+<section>
+
+	<div class="item">
+		<h3>1. We are deeply dependent on EPANET</h3>
+		<p>Not inspired by it, and not merely compatible with it: dependent on it. The specifics, each one
+		listed with its source on the <a href="citations.html">Citations</a> page:</p>
+		<ul class="facts">
+			<li><b>The engine is EPANET's, and it ships inside the page.</b> A 679 KB browser
+			build of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand. We wrote a drawing
+			surface and put EPANET underneath it.</li>
+			<li><b>Most of the answers only exist because it is there.</b> Extended period
+			simulation, water age, source trace, chemical decay, pump energy, rule-based controls
+			and pressure-reducing, pressure-sustaining and flow-control valves run through the
+			EPANET engine and nothing else. Our own solver does one instant, pressures and flows
+			only, and is not planned to do more.</li>
+			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
+			<code>.inp</code> file, from <code>[TITLE]</code> to <code>[END]</code> across the
+			sections we support, and a value you did not edit comes back out character for
+			character.
+			<span class="qualify">We have a format of our own too: a project saves as JSON,
+			because an <code>.inp</code> cannot hold scenarios, saved profile paths, the background
+			picture itself, map tiles and your view, a Text label with more than one line, or
+			longitude and latitude. Everything an <code>.inp</code> can carry still round-trips
+			through one, and the five things it cannot are reported rather than dropped.</span></li>
+			<li><b>We check ourselves against EPA's own published answers.</b> Our extended period
+			simulation is compared against EPA's own report for its Net3 example network: 2,425 head
+			comparisons across 25 reporting steps, agreeing to 0.005 ft. Water quality is
+			anchored on the same report, worst difference 0.105%. Pump energy is anchored on that
+			report's own energy table. EPANET is the truth we are measured against.</li>
+			<li><b>Even the arithmetic is EPANET's.</b> Our one Hazen-Williams coefficient pair is
+			derived from EPANET's <code>h = 4.727 L Q^1.852 / (C^1.852 d^4.871)</code>, not from
+			the more commonly quoted metric restatement. The two disagree by up to 0.12% from
+			50 mm to 2 m, and we chose to agree with EPANET, because EPANET is what our users will
+			check us against.</li>
+			<li><b>The vocabulary is EPANET's.</b> Junction, reservoir, tank, pipe, pump, valve.
+			Extended period simulation. Trials and iterations, static pressure, drawdown, converge.
+			The four curve types. The grammar of a rule. What happens when you change a unit. An
+			engineer who knows EPANET should not have to learn a second dialect from us, and a
+			build check fails when we start writing one.</li>
+			<li><b>The interface is inspired by and informed by EPANET's.</b> Its curve editor
+			and its table of assets are where ours came from, and its five map colors are in our
+			palette unsoftened, though our default is Viridis. What we added on top is the
+			&ldquo;++&rdquo;: scenarios, a world map, fire flow, customers, custom properties, asset
+			libraries you can import across projects, find and replace, flexible multi-labels, a
+			menu system we hope is easier, and being a web page rather than a Windows program.</li>
+		</ul>
+		<p>That is the dependency graph. If EPANET had not existed, or had not been given
+		away, this project would not exist.</p>
+	</div>
+
+	<div class="item" id="less-free">
+		<h3>2. Our license is less free than EPANET's</h3>
+		<blockquote>
+			<p>Not public domain; less free than EPANET; less trusting than EPANET; arguably
+			less collegial than EPANET. For better or for worse, we are currently working under
+			Richard M. Stallman&rsquo;s GNU General Public License 3.0, which is aggressively
+			restrictive against locking up this work. The rationale is that this protects us all
+			against property hoarders. Talk to us about this if you see the error of our ways.</p>
+			<footer class="attrib">Tom Haws, 2026-09-06</footer>
+		</blockquote>
+		<p>EPANET carries no license at all, because
+		a work of the United States government has no copyright to license. Anybody may take it
+		and do anything, including take it private. We chose a license that forbids that, which
+		is a restriction we impose and EPA did not. Reasonable people disagree about whether
+		that is generosity or distrust. If you think we got it wrong, write to us.</p>
+	</div>
+
+	<div class="item">
+		<h3>3. We are new, with all that implies</h3>
+		<p>Development started on 28 July 2026. As of 1 September 2026 the software has carried
+		one real-world design report. Counting the defects found and fixed since would tell you
+		nothing you could use; what those two dates tell you is that the ones nobody has hit yet
+		are still in there.</p>
+		<p>We do not publish a completeness claim against EPANET, and nothing on this site should
+		be read as one. The &ldquo;++&rdquo; names what we added, not a claim to everything EPANET
+		does. If you find something EPANET does that EPANET++ does not, that is a report we
+		want.</p>
+	</div>
+
+	<div class="item">
+		<h3>4. This is AI-assisted, and here is the reason</h3>
+		<p>The software and this website are written with heavy use of AI. Tom Haws asked that
+		his own statement of why be carried as he wrote it:</p>
+		<blockquote>
+			<p>This would not be possible without AI. Tom Haws decided in 2026 that if AI is
+			going to destroy the world, he better not use it for cat videos. His only
+			justification for using AI is to tell the world the highest message of heaven: That
+			they are loved and cherished forever, that they have nothing to fear, and that they
+			are not ruining everything.</p>
+			<footer class="attrib">Tom Haws, 2026-09-06</footer>
+		</blockquote>
+	</div>
+
+	<div class="item">
+		<h3>5. Nobody has vetted this on your behalf</h3>
+		<p>No EPA affiliation, no government affiliation, no university affiliation, no sponsor,
+		no foundation, and no funding. Nobody has vetted this software on your behalf. Every
+		claim on this page is one you can check yourself: they are set out one by one,
+		each with its source, on the <a href="citations.html">Citations</a> page.</p>
+	</div>
+</section>
+
+</main>
+
+<footer>
+	<p><b>Not the EPA&rsquo;s.</b> This site is not affiliated with, endorsed by, or sponsored by the
+	United States Environmental Protection Agency. EPANET is a public-domain program of the US EPA.
+	EPANET++ is not EPANET.</p>
+	<p>This page makes no request to any other server: no fonts, no scripts, no images from
+	elsewhere, no analytics, no cookies, and no storage on your device.</p>
+	<p><a href="index.html">Back to the front page</a> &middot;
+	<a href="citations.html">Every claim, with its source</a></p>
+</footer>
+
+</div>
+</body>
+</html>
