@@ -13,6 +13,11 @@ RedirectMatch 404 "/\.(?!well-known/)[^/]+/"
 RedirectMatch 404 "^/tools(/|$)"
 RedirectMatch 404 "\.(md|sh|py)$"
 #
+# UNTIL B1 IS RELEASED, /app and /app/ send a visitor to the app where it is served today, keeping any
+# query string (Tom found /app/?ec_nolog=1 a 404, 2026-09-28). 302, because B1 will serve /app/ here
+# and a cached 301 would outlive it. Remove this rule in the same commit that adds B1's rewrite.
+RedirectMatch 302 "^/app/?$" "https://librewaternet.org/app/"
+#
 # /app/ IS NOT SERVED HERE UNDER OPTION A. Every "Open the network editor" button links straight
 # to APP_URL in tools/build.py (today https://librewaternet.org/app/). Option B1 mounts the app at
 # /app/ on this host; that is when a rule for /app belongs in this file, not before.
