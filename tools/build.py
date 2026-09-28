@@ -162,6 +162,8 @@ CITATIONS_SHELL = """<!doctype html>
 <meta property="og:image:width" content="1921">
 <meta property="og:image:height" content="920">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
