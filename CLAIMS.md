@@ -12,17 +12,17 @@ Ledger written 2026-09-27.
 
 ## 1. The headline and lede (index.html)
 
-The headline and the lede are Tom Haws's own wording of 2026-09-27, used verbatim.
+The headline and the lede are Tom Haws's own wording of 2026-09-27, made exact about the engine (OWA-EPANET 2.3.5, MIT-licensed) on his instruction the same day.
 
 | # | Claim | Source |
 |---|---|---|
 | 1.1 | EPANET++ extends the EPANET engine with scenarios, a world map, fire flow, customers, custom properties, and asset libraries | Rows 2.1 to 2.6, one per extension |
 | 1.2 | It is free, libre, and open source | GNU GPL v3 or later: `EC/CLAUDE.md` license line; row 6.1 |
-| 1.3 | It is built on the EPANET engine itself | The default engine for a new project is EPANET (`EC/js/looped-network.js`, `defaultSettings()`, `engine: 'epanet'`). The engine is OWA-EPANET 2.3.5 (`EC/js/vendor/README.md`); see row 3.1 |
+| 1.3 | It is built on OWA-EPANET 2.3.5, Open Water Analytics' MIT-licensed continuation of EPA's EPANET | The default engine for a new project is EPANET (`EC/js/looped-network.js`, `defaultSettings()`, `engine: 'epanet'`). The engine is OWA-EPANET 2.3.5 (`EC/js/vendor/README.md`); see row 3.1 |
 | 1.4 | The solver is the one the U.S. Environmental Protection Agency wrote and gave away | EPANET was written at EPA and is public domain under 17 U.S.C. § 105 (rows 7.2, 7.3). The engine we run is Open Water Analytics' continuation of it (row 7.6); see section 9 |
 | 1.5 | Asset libraries can be imported across projects | `EC` commit `640c018f` "Import a library from another project file", merged to master in `bfb5d37d` (2026-09-18) on Tom's all-clear |
 | 1.6 | It is not EPANET, and it is not affiliated with or endorsed by the EPA | Row 1.8 |
-| 1.7 | It is one of many tools built on public-domain software EPA released | Row 7.5: EPANET's engine sits under many other programs, commercial and free |
+| 1.7 | It is one of many tools built on the engine EPA released | Row 7.5: EPANET's engine sits under many other programs, commercial and free |
 | 1.8 | The first-screen disclaimer: EPANET is a program of the US EPA; this site is not EPA's; EPANET++ is not EPANET, not a version of it, and not an official successor; EPA has not reviewed, endorsed, approved, sponsored, or been asked | [epa.gov/water-research/epanet](https://www.epa.gov/water-research/epanet). Adapted from not-epanet.org's disclaimer paragraph, which its own ledger sources to Tom Haws's confirmation of 2026-09-06 that EPA had not been contacted. See section 9 |
 | 1.9 | The screenshot title block: EPA Net3, 92 junctions, EPANET engine, GPL v3+ | Net3 as EPA ships it has 92 junctions, 2 reservoirs, and 3 tanks (97 nodes; the import on the Screenshots page reports 97). Carried from LWN |
 
