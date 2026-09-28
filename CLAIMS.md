@@ -135,8 +135,7 @@ cards. The two sentences already written about him.
 
 | # | Claim | Source |
 |---|---|---|
-| 10.1 | Tom Haws wrote and copyrights EngCalcs, the calculator suite EPANET++ points to, starting in 2009, under the GNU GPL v3 or later the whole time | `EC/lib/HeadersFooters.lib.php:53`: "Copyright &copy; 2009&ndash;2026 Thomas Gail Haws. Licensed under the GNU GPL v3.0 or later." |
-| 10.2 | The software and this site are written with heavy use of AI | `LWN/index.html:187`, "The software and this website are written with heavy use of AI"; row 8.3 (`EC/dev/positioning.md`, Tom Haws, 2026-09-06); `not-epanet.org/claims.html:116`, row 4.8b, Tom Haws, 2026-09-06: "one semi-retired engineer with an AI to build this in a summer" |
+| 10.1 | Tom's advisor card: his first network model (1990, Cotton County Rural Water District, Micro Hardy Cross), software for engineers since 1995, free multi-lingual online calculators since 2010, and why he made EPANET++ | Tom Haws's own words, 2026-09-28, supplied for this card and used verbatim. The 2010 date agrees with the earliest Internet Archive capture he found; the server's own log shows EngCalcs running by 2009-10-20 (`EC/dev/earliest-date.md`) |
 
 ## 11. Claims deliberately not made
 
