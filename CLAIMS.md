@@ -26,7 +26,7 @@ The headline and the lede are Tom Haws's own wording of 2026-09-27, made exact a
 | 1.8 | The first-screen disclaimer: EPANET is a program of the US EPA; this site is not EPA's; EPANET++ is not EPANET, not a version of it, and not an official successor; EPA has not reviewed, endorsed, approved, sponsored, or been asked | [epa.gov/water-research/epanet](https://www.epa.gov/water-research/epanet). Adapted from not-epanet.org's disclaimer paragraph, which its own ledger sources to Tom Haws's confirmation of 2026-09-06 that EPA had not been contacted. See section 9 |
 | 1.9 | The screenshot title block: EPA Net3, 92 junctions, EPANET engine, GPL v3+ | Net3 as EPA ships it has 92 junctions, 2 reservoirs, and 3 tanks (97 nodes; the import on the Screenshots page reports 97). Carried from LWN |
 
-## 2. What the ++ adds (index.html, features.html)
+## 2. Why ++ (index.html, features.html)
 
 Each row is a statement about EPANET++ and not about EPANET. No row claims EPANET lacks the feature.
 
