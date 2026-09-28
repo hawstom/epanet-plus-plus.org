@@ -25,7 +25,7 @@ import sys
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 
-APP_URL = "https://librewaternet.org/app/"
+APP_URL = "https://epanet-plus-plus.org/app/"
 
 ORIGIN = "https://epanet-plus-plus.org/"
 

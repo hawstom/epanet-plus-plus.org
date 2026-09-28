@@ -4,3 +4,7 @@
 Thumbs.db
 *:Zone.Identifier
 error_log
+# Server-only files beside the clone: the suite symlink and cPanel PHP settings.
+/engcalcs
+/php.ini
+/.user.ini

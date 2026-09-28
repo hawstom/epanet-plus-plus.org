@@ -13,11 +13,22 @@ RedirectMatch 404 "/\.(?!well-known/)[^/]+/"
 RedirectMatch 404 "^/tools(/|$)"
 RedirectMatch 404 "\.(md|sh|py)$"
 #
-# UNTIL B1 IS RELEASED, /app and /app/ send a visitor to the app where it is served today, keeping any
-# query string (Tom found /app/?ec_nolog=1 a 404, 2026-09-28). 302, because B1 will serve /app/ here
-# and a cached 301 would outlive it. Remove this rule in the same commit that adds B1's rewrite.
-RedirectMatch 302 "^/app/?$" "https://librewaternet.org/app/"
+# B1, RELEASED 2026-09-28 on Tom's "Release": the map app is served here at /app/, from the
+# ./engcalcs symlink into the suite (same target as librewaternet.org's). /app redirects to /app/ first:
+# a web app manifest's scope is a plain string prefix, so a visitor at the bare /app could not install.
+# Never add a redirect on /engcalcs/Looped-Network.php here; that loops (the PHP does it).
+RewriteEngine On
+RewriteRule ^app$ /app/ [R=301,L]
+RewriteRule ^app/?$ /engcalcs/Looped-Network.php [L]
 #
-# /app/ IS NOT SERVED HERE UNDER OPTION A. Every "Open the network editor" button links straight
-# to APP_URL in tools/build.py (today https://librewaternet.org/app/). Option B1 mounts the app at
-# /app/ on this host; that is when a rule for /app belongs in this file, not before.
+# THE BLOCK BELOW IS cPANEL'S AND IT IS LOAD-BEARING. Setting this vhost's PHP version in MultiPHP
+# Manager writes it here, and it is how ea-php83 reaches the app; without it the account default
+# (ea-php56) 500s every app page. It is carried in this tracked file so that cPanel's write and ours
+# agree and a pull does not conflict. Leave it alone; cPanel rewrites it when the version changes.
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php83” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
