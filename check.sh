@@ -133,13 +133,18 @@ for f in *.html; do
 		| sed "s|^|FAIL  $f: struck claim: |" | grep . && fail=1
 done
 
-# 10. THE SITEMAP LISTS EXACTLY THE PAGES.
+# 10. THE SITEMAP LISTS EXACTLY THE PAGES, EXCEPT A NOINDEX DRAFT (a page not yet ready to
+#     publish, such as advisors.html until Tom fills in its placeholders) stays out of both the
+#     sitemap and this count.
+n_pages=0
 for f in *.html; do
+	grep -qi '<meta name="robots" content="noindex">' "$f" && continue
+	n_pages=$((n_pages + 1))
 	want="$ORIGIN$f"; [ "$f" = index.html ] && want="$ORIGIN"
 	grep -q "<loc>$want</loc>" sitemap.xml || bad "sitemap.xml does not list $want"
 done
-n_pages=$(ls *.html | wc -l); n_locs=$(grep -c '<loc>' sitemap.xml)
-[ "$n_pages" = "$n_locs" ] || bad "sitemap.xml has $n_locs entries for $n_pages pages"
+n_locs=$(grep -c '<loc>' sitemap.xml)
+[ "$n_pages" = "$n_locs" ] || bad "sitemap.xml has $n_locs entries for $n_pages non-draft pages"
 
 # 11. EVERY DIRECTORY IS DECLARED SERVED OR BLOCKED. The document root is this repository, so an
 #     undeclared directory is public. LibreWaterNet's tools/ was publicly executable until 2026-09-18.

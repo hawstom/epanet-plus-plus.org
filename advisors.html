@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Who we are</title>
+<meta name="description" content="The people advising EPANET++: who they are and what they bring.">
+<!-- NOT PUBLISHED YET. This page carries three placeholder advisor cards (2-4) that Tom Haws asked
+     for (verbatim: "Maybe I can get a gallery of advisors. I will work on that. Could you prepare
+     a nice Who we are or Advisors page with space for about 4 advisors including me?"), 2026-09-28.
+     Do not remove noindex, add to sitemap.xml, or add the nav link below until Tom has filled in
+     the placeholder cards and the bracketed lines on his own card. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://epanet-plus-plus.org/advisors.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EPANET++">
+<meta property="og:url" content="https://epanet-plus-plus.org/advisors.html">
+<meta property="og:title" content="Who we are">
+<meta property="og:description" content="The people advising EPANET++: who they are and what they bring.">
+<meta property="og:image" content="https://epanet-plus-plus.org/img/0082.png">
+<meta property="og:image:width" content="1921">
+<meta property="og:image:height" content="920">
+<link rel="stylesheet" href="style.css">
+<style>
+	/* Advisor gallery: one column on a phone, two on a wide screen, same door-card look as the
+	   front page's two doors. A photo slot is a neutral silhouette, drawn inline so the page makes
+	   no image request for a person who has not supplied a photo. */
+	.advisors {
+		display: grid; gap: 1.4rem 1.8rem; margin: 2.2rem 0 0;
+		grid-template-columns: 1fr;
+	}
+	@media (min-width: 640px) { .advisors { grid-template-columns: 1fr 1fr; } }
+	.advisor {
+		border: 1px solid var(--rule);
+		background: var(--paper);
+		padding: 1.2rem clamp(1rem, 3vw, 1.5rem);
+		display: flex; flex-direction: column; gap: .6rem;
+	}
+	.advisor .photo {
+		width: 84px; height: 84px;
+		border-radius: 50%;
+		background: var(--paper-2);
+		border: 1px solid var(--rule);
+		display: flex; align-items: center; justify-content: center;
+		flex: none;
+	}
+	.advisor .photo svg { width: 52px; height: 52px; fill: var(--ink-2); }
+	.advisor .who { display: flex; align-items: center; gap: 1rem; }
+	.advisor h3 { margin: 0; }
+	.advisor .role { font-family: var(--sans); font-size: .92rem; color: var(--ink-2); margin: 0; }
+	.advisor p.bio { font-size: .96rem; margin: 0; }
+	.advisor .more { font-size: .92rem; margin: 0; }
+</style>
+</head>
+<body>
+<div class="sheet-bg" aria-hidden="true"></div>
+
+<div class="sheet">
+
+<header class="topbar">
+	<!-- BEGIN GENERATED CHROME -->
+	<div class="marks">
+		<a class="wordmark" href="index.html">EPANET<span class="pp">++</span></a>
+	</div>
+	<nav>
+		<a href="index.html">Front page</a>
+		<a href="features.html">Feature list</a>
+		<a href="screenshots.html">Screenshots</a>
+		<a href="credits.html">Credits</a>
+		<a href="disclosures.html">Disclosures</a>
+		<a href="citations.html">Citations</a>
+		<a href="https://hawsedc.com/engcalcs/contact.php">Contact</a>
+	</nav>
+	<!-- END GENERATED CHROME -->
+</header>
+<!-- To put this page on the nav once it is ready to publish, add this line to NAV in
+     tools/build.py (in order, wherever it should sit) and run python3 tools/build.py:
+     ("advisors.html", "Advisors"),
+     The nav label chosen is "Advisors": every other entry (Credits, Disclosures, Citations) is
+     one word naming what the page holds, unlike the page's own title "Who we are". -->
+
+<main>
+
+<div class="hero">
+	<span class="label">The people behind it</span>
+	<h1>Who we are<span class="rule-under"></span></h1>
+	<p class="lede">EPANET++ is steered by a small group of advisors. Here they are, in their own words.</p>
+</div>
+
+<section>
+
+	<div class="advisors">
+
+		<article class="advisor">
+			<div class="who">
+				<div class="photo" aria-hidden="true">
+					<svg viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.46 5-5.5S14.76 1 12 1 7 3.46 7 6.5 9.24 12 12 12zm0 2c-3.87 0-9 2.01-9 5.5V22h18v-2.5c0-3.49-5.13-5.5-9-5.5z"/></svg>
+				</div>
+				<div>
+					<h3>Tom Haws, P.E.</h3>
+					<p class="role">Founder</p>
+				</div>
+			</div>
+			<p class="bio">Tom Haws wrote and copyrights EngCalcs, the calculator suite that
+			EPANET++ points to, starting in 2009, and has kept it under the GNU GPL v3 or later
+			the whole time. <!-- Tom: your role, in your words --><b>[Tom: your role, in your
+			words]</b> The software and this site are written with heavy use of AI, a choice Tom
+			made because he judged it was the only way one person could build this in a
+			summer. <!-- Tom: a sentence or two on what you bring as an advisor, beyond building it
+			--><b>[Tom: a sentence or two on what you bring as an advisor, beyond having built
+			it]</b></p>
+			<p class="more"><a href="https://hawsedc.com/engcalcs/contact.php">Contact</a></p>
+		</article>
+
+		<article class="advisor">
+			<div class="who">
+				<div class="photo" aria-hidden="true">
+					<svg viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.46 5-5.5S14.76 1 12 1 7 3.46 7 6.5 9.24 12 12 12zm0 2c-3.87 0-9 2.01-9 5.5V22h18v-2.5c0-3.49-5.13-5.5-9-5.5z"/></svg>
+				</div>
+				<div>
+					<h3>[Advisor name]</h3>
+					<p class="role">[Role]</p>
+				</div>
+			</div>
+			<p class="bio">[A few sentences in the advisor's own words.]</p>
+			<p class="more">[Optional link]</p>
+		</article>
+
+		<article class="advisor">
+			<div class="who">
+				<div class="photo" aria-hidden="true">
+					<svg viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.46 5-5.5S14.76 1 12 1 7 3.46 7 6.5 9.24 12 12 12zm0 2c-3.87 0-9 2.01-9 5.5V22h18v-2.5c0-3.49-5.13-5.5-9-5.5z"/></svg>
+				</div>
+				<div>
+					<h3>[Advisor name]</h3>
+					<p class="role">[Role]</p>
+				</div>
+			</div>
+			<p class="bio">[A few sentences in the advisor's own words.]</p>
+			<p class="more">[Optional link]</p>
+		</article>
+
+		<article class="advisor">
+			<div class="who">
+				<div class="photo" aria-hidden="true">
+					<svg viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.46 5-5.5S14.76 1 12 1 7 3.46 7 6.5 9.24 12 12 12zm0 2c-3.87 0-9 2.01-9 5.5V22h18v-2.5c0-3.49-5.13-5.5-9-5.5z"/></svg>
+				</div>
+				<div>
+					<h3>[Advisor name]</h3>
+					<p class="role">[Role]</p>
+				</div>
+			</div>
+			<p class="bio">[A few sentences in the advisor's own words.]</p>
+			<p class="more">[Optional link]</p>
+		</article>
+
+	</div>
+
+	<p style="margin-top: 2rem;">Interested in advising, or have something to tell us? <a href="https://hawsedc.com/engcalcs/contact.php">Get in touch</a>.</p>
+
+</section>
+
+</main>
+
+<footer>
+	<p><b>Not the EPA&rsquo;s.</b> This site is not affiliated with, endorsed by, or sponsored by the
+	United States Environmental Protection Agency. EPANET is a public-domain program of the US EPA.
+	EPANET++ is not EPANET.</p>
+	<p>This page makes no request to any other server: no fonts, no scripts, no images from
+	elsewhere, no analytics, no cookies, and no storage on your device.</p>
+	<p><a href="index.html">Back to the front page</a> &middot;
+	<a href="citations.html">Every claim, with its source</a></p>
+</footer>
+
+</div>
+</body>
+</html>
