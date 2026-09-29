@@ -32,3 +32,12 @@ RewriteRule ^app/?$ /engcalcs/Looped-Network.php [L]
   AddHandler application/x-httpd-ea-php83 .php .php8 .phtml
 </IfModule>
 # php -- END cPanel-generated handler, do not edit
+
+# Pages revalidate on every visit. With only Last-Modified, browsers cache a page by guesswork, and
+# Tom (2026-09-28) was sent to librewaternet.org by a cached copy of the first landing page, whose
+# buttons pointed there. Revalidating costs a 304 per page; images and CSS are untouched.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html?$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
