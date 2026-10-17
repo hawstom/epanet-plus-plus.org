@@ -647,7 +647,7 @@ table.feats code {
    width and centred rather than run to the measure. */
 
 /* ---- section ---- */
-section.act { margin: 0 0 26px; }
+section.act { margin: 0 0 13px; padding-top: clamp(1.2rem, 3vw, 2rem); }
 .act > h2 {
 	font-family: var(--cond);
 	font-weight: 600; font-size: var(--step--1);
