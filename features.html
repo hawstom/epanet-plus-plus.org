@@ -52,118 +52,154 @@
 
 <p class="dek">Everything here works in a browser, free, with no account.</p>
 
-<!-- HAND-MAINTAINED. This mirrors LibreWaterNet.org's features.html (itself built from EngCalcs'
-     dev/features.md) with the EPANET++ extensions added in our own words. It is a list of what
-     we built, NEVER a comparison table against EPANET: no row says or implies what EPANET lacks. -->
+<!-- GENERATED, as on LibreWaterNet.org: the list between the FEATURES sentinels is EngCalcs'
+     dev/features.md, put here by tools/build-features.php (a copy of LibreWaterNet's). Never edit
+     a row by hand; change the source and rebuild. It is a list of what we built, NEVER a
+     comparison table against EPANET: no row says or implies what EPANET lacks. -->
 <p class="standfirst"><strong>This list is long and detailed, but incomplete.</strong> Use your
 browser&rsquo;s find (Ctrl+F, or &#8984;F on a Mac) to search for a feature you are interested in.
 If you only want to know whether the thing is any good, <a data-app="" href="https://epanet-plus-plus.org/app/">diving in saves
 time</a>.</p>
 
-<p class="count">37 things it does.</p>
+<!-- BEGIN GENERATED FEATURES -->
+<p class="count">48 things it does.</p>
 
 <nav class="jump" aria-label="Sections">
-	<a href="#extensions">The extensions</a>
 	<a href="#solver">Solver</a>
-	<a href="#projects">Projects and saving</a>
-	<a href="#import">Import, export, and map</a>
-	<a href="#assets">Assets and results</a>
-	<a href="#eps">Extended-period simulation</a>
-	<a href="#language">Language, license, and privacy</a>
+	<a href="#projects-files-and-formats">Projects, files, and formats</a>
+	<a href="#adding-editing-and-displaying-assets-and-results">Adding, editing, and displaying assets and results</a>
+	<a href="#extended-period-simulations">Extended-period simulations</a>
+	<a href="#analyses">Analyses</a>
+	<a href="#scenarios-and-alternatives">Scenarios and alternatives</a>
+	<a href="#ease-of-use">Ease of use</a>
+	<a href="#premium-features-included-for-everybody">Premium features included for everybody</a>
+	<a href="#language-license-and-privacy">Language, license, and privacy</a>
 </nav>
-
-<section class="act" id="extensions">
-<h2>The extensions <span class="ct">9</span></h2>
-<table class="feats">
-<tbody>
-	<tr><td>Scenarios: each one holds only its overrides of the base model, with an override report and a scenario comparison report.</td></tr>
-	<tr><td>World map canvas, street or satellite, or your own backdrop with friendly positioning options.</td></tr>
-	<tr><td>Fire flow analysis across the whole system, reporting where the required flow fails and where it pulls pressure below design elsewhere.</td></tr>
-	<tr><td>Customers: metered services with demand, service count, and pattern, each connected to the node or pipe that serves it.</td></tr>
-	<tr><td>Custom properties on any kind of asset, with your own labels and limits, overridable by a scenario, and flagged in place when a value breaks its own limits.</td></tr>
-	<tr><td>Pipe types library: one &ldquo;150 mm PVC&rdquo; definition that many pipes refer to, so editing the definition edits every pipe using it. Detach one pipe when it needs to be the exception.</td></tr>
-	<tr><td>Fittings library: a pipe&rsquo;s minor loss summed from named fittings and their quantities, starting from the EPANET user manual&rsquo;s own table and editable.</td></tr>
-	<tr><td>Import whole libraries from another project file. A name already taken is skipped and listed, so nothing you have is changed.</td></tr>
-	<tr><td>Group edit three ways: find and replace, select an area, or edit the tables like a spreadsheet.</td></tr>
-</tbody>
-</table>
-</section>
 
 <section class="act" id="solver">
 <h2>Solver <span class="ct">3</span></h2>
 <table class="feats">
 <tbody>
-	<tr><td>The EPANET 2.3.5 engine, running in your browser, for steady state and extended-period simulation.</td></tr>
-	<tr><td>A built-in solver of our own for a single moment, and a display comparing the two.</td></tr>
-	<tr><td>Recalculate automatically, or only when you ask.</td></tr>
+	<tr><td>Native solver for steady-state (single moment) simulation. <!-- 146 --></td></tr>
+	<tr><td>EPANET 2.3.5 solver for extended-period simulations, with a solver comparison display. <!-- 451, 419 --></td></tr>
+	<tr><td>Auto-recalculate option. <!-- 467 --></td></tr>
 </tbody>
 </table>
 </section>
 
-<section class="act" id="projects">
-<h2>Projects and saving <span class="ct">2</span></h2>
+<section class="act" id="projects-files-and-formats">
+<h2>Projects, files, and formats <span class="ct">12</span></h2>
 <table class="feats">
 <tbody>
-	<tr><td>Several projects open in tabs, kept in your browser, or saved to a project file with locking for sharing on an office network.</td></tr>
-	<tr><td>Install for offline use.</td></tr>
+	<tr><td>Multiple open project tabs, saved in the browser or to an &quot;.epp&quot; file, with locking for office network collaboration. <!-- 146.08, 447, 352, 360 --></td></tr>
+	<tr><td>Install for offline use. <!-- 2, 4, 37, 246 --></td></tr>
+	<tr><td>Network import and export as EPANET <code>.inp</code>, plus network export to GeoJSON and DXF. <!-- 196, 483, 281 --></td></tr>
+	<tr><td>Tables export to ODS, XLSX, and CSV; Shapes import from shapefile, GeoJSON, and DXF; surveyed points import as junctions; clipboard copy/paste. <!-- 592, 776 --></td></tr>
+	<tr><td>Workspace file: save your box layout, panes, and display options, and import them on another screen or browser. <!-- 313 --></td></tr>
+	<tr><td>Many example projects, each loaded and solved in one click. <!-- 314, 257, 454 --></td></tr>
+	<tr><td>Libraries of patterns, curves, controls, rules, pipe types, and fittings, importable from another project file. <!-- 611, 792, 465, 590 --></td></tr>
+	<tr><td>Screenshot tool with enhanced resolution and a markup pen. <!-- 793 --></td></tr>
+	<tr><td>World map canvas or your own backdrop. <!-- 145, 276 --></td></tr>
+	<tr><td>XY to Lat/Lon conversion import wizard. <!-- 476 --></td></tr>
+	<tr><td>Conversion of a project copy to another coordinate system and other units, and new projects in a real EPSG projection. <!-- 696, 641 --></td></tr>
+	<tr><td>Place name search, and elevations filled in from a digital elevation model. <!-- 437, 497 --></td></tr>
 </tbody>
 </table>
 </section>
 
-<section class="act" id="import">
-<h2>Import, export, and map <span class="ct">4</span></h2>
+<section class="act" id="adding-editing-and-displaying-assets-and-results">
+<h2>Adding, editing, and displaying assets and results <span class="ct">12</span></h2>
 <table class="feats">
 <tbody>
-	<tr><td>EPANET <code>.inp</code> files import and export, with a report of everything accepted or ignored, and unedited values written back character for character.</td></tr>
-	<tr><td>Examples from EPANET and others, on XY and on latitude and longitude, loaded and solved in one click.</td></tr>
-	<tr><td>An import wizard that moves an XY model onto the world map.</td></tr>
-	<tr><td>Place-name search, and ground elevations read from the map&rsquo;s terrain data with a preview.</td></tr>
+	<tr><td>Junction, reservoir, tank, pipe with vertex draw and edit mode, pump, valve, and annotation text. <!-- 146.02 --></td></tr>
+	<tr><td>Junction and pipe chain draw, with pipe split offered contextually when a junction lands on a pipe. <!-- 719 --></td></tr>
+	<tr><td>Draw reference Shapes (points, lines, and polygons), managed in a Shapes table. <!-- 779 --></td></tr>
+	<tr><td>Copy and paste properties between assets. <!-- 185 --></td></tr>
+	<tr><td>Customizable node and link labels: prefixes, suffixes, separator, drop order, and automatic or manual placement. <!-- 345, 329, 333, 336, 397, 398, 399, 469, 146.01, 383 --></td></tr>
+	<tr><td>Find, replace, and go to elements, including complex queries in your language. <!-- 353, 420, 389, 540 --></td></tr>
+	<tr><td>Mass-edit assets by Find and replace, Select area, or spreadsheet Tables. <!-- 266 --></td></tr>
+	<tr><td>Network coloring: three to seven ranges, six ways of placing the breaks (or type your own), and 41 color ramps. <!-- 384, 327 --></td></tr>
+	<tr><td>Multi-line annotation text with bold, rotation, and association to assets. <!-- 337, 342, 376 --></td></tr>
+	<tr><td>Independent size settings for text, symbol, and pipes. <!-- 331, 362 --></td></tr>
+	<tr><td>Graphs: HGL profiles with path editing, time series, contour on the map, frequency distribution, and a flow balance of production against consumption. <!-- 409, 433, 506, 510, 600, 640 --></td></tr>
+	<tr><td>Time series graphs at the foot of Properties and as bubbles on the map, including tank depth. A bubble&rsquo;s display is set per scenario. <!-- 637, 784, 804, 795 --></td></tr>
 </tbody>
 </table>
 </section>
 
-<section class="act" id="assets">
-<h2>Assets and results <span class="ct">8</span></h2>
+<section class="act" id="extended-period-simulations">
+<h2>Extended-period simulations <span class="ct">7</span></h2>
 <table class="feats">
 <tbody>
-	<tr><td>Junction, reservoir, tank, pipe with vertex drawing and editing, pump, valve, customer, and annotation text.</td></tr>
-	<tr><td>Node and link labels built from several fields, with prefixes, suffixes, a separator, and a drop order, placed automatically or by hand on leaders or along links.</td></tr>
-	<tr><td>Find, replace, and go to elements, including compound queries in your language.</td></tr>
-	<tr><td>Editable, pasteable, spreadsheet-like tables for every kind of asset.</td></tr>
-	<tr><td>Network coloring: three to seven ranges, eight ways of choosing where the breaks fall, and 41 color ramps.</td></tr>
-	<tr><td>Multi-line annotation text with bold, rotation that can match a pipe, and association to an asset.</td></tr>
-	<tr><td>Separate size settings for text, symbols, and pipes.</td></tr>
-	<tr><td>Hydraulic grade line profiles along a path you choose and edit.</td></tr>
+	<tr><td>Extended-period simulation with patterns for demands, reservoir head, and pump speed. <!-- 248.01, 423, 410, 248.02 --></td></tr>
+	<tr><td>EPANET-style rule-based controls. <!-- 248.03 --></td></tr>
+	<tr><td>Pump, efficiency, head loss, and tank volume curves, kept in the Libraries box. <!-- 460, 586, 587 --></td></tr>
+	<tr><td>EPANET run report. <!-- 450 --></td></tr>
+	<tr><td>Color ranges constant through a simulation. <!-- 448 --></td></tr>
+	<tr><td>Water quality: age, share from a source, chemical decay. <!-- 566 --></td></tr>
+	<tr><td>Pump energy report: operating share, efficiency, power, energy used, and cost including a peak demand charge. <!-- 566.01, 577 --></td></tr>
 </tbody>
 </table>
 </section>
 
-<section class="act" id="eps">
-<h2>Extended-period simulation <span class="ct">8</span></h2>
+<section class="act" id="analyses">
+<h2>Analyses <span class="ct">3</span></h2>
 <table class="feats">
 <tbody>
-	<tr><td>Patterns for demands, reservoir head, and pump speed.</td></tr>
-	<tr><td>Simple controls and EPANET-style rule-based controls.</td></tr>
-	<tr><td>Pump, efficiency, head loss, and tank volume curves, defined once in the Libraries box and referred to by name, so a manufacturer&rsquo;s curve keeps every point it was published with.</td></tr>
-	<tr><td>Playback of the run, step by step or animated.</td></tr>
-	<tr><td>The EPANET run report, including every element at every time step and what switched, and when.</td></tr>
-	<tr><td>Color limits held constant through a run, so a color means the same thing at every step.</td></tr>
-	<tr><td>Water quality: age, share from a source, chemical decay.</td></tr>
-	<tr><td>Pump energy: run time, power, and cost including a peak demand charge.</td></tr>
+	<tr><td>Fire flow analysis: which junctions miss their fire flow, and which pull the rest of the system below its limits. <!-- 530 --></td></tr>
+	<tr><td>Criticality analysis, which removes each pipe, pump, and valve in turn and reports the effect. <!-- 751 --></td></tr>
+	<tr><td>Demand scaling, which finds the largest demand scale the system can carry. <!-- 754 --></td></tr>
 </tbody>
 </table>
 </section>
 
-<section class="act" id="language">
+<section class="act" id="scenarios-and-alternatives">
+<h2>Scenarios and alternatives <span class="ct">2</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Scenarios with overrides marked on the map, Manage overrides, and a scenario comparison report. <!-- 201, 407, 412, 512 --></td></tr>
+	<tr><td>Alternatives with an inheritance tree, overrides mergeable upward into the alternative above, Presentation and Calculation override categories, ready-made scenarios in every new project, a Basic mode, and many more management features. <!-- 750, 765, 755, 801, 802 --></td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="ease-of-use">
+<h2>Ease of use <span class="ct">6</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Searchable user manual. <!-- 763 --></td></tr>
+	<tr><td>Every setting in one box, searchable by the words you would use. <!-- 457 --></td></tr>
+	<tr><td>Dockable boxes that auto-hide to an edge tab. <!-- 441 --></td></tr>
+	<tr><td>One Water menu holds everything about water modeling, assets included. <!-- 543 --></td></tr>
+	<tr><td>Editable, pasteable, spreadsheet-like asset tables. <!-- 434, 455 --></td></tr>
+	<tr><td>Snap to objects, which enhances the value of DXF and shapefile Shapes import. <!-- 782 --></td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="premium-features-included-for-everybody">
+<h2>Premium features included for everybody <span class="ct">4</span></h2>
+<table class="feats">
+<tbody>
+	<tr><td>Scenarios and alternatives (<a href="#scenarios-and-alternatives">above</a>). <!-- see: Scenarios and alternatives --></td></tr>
+	<tr><td>Fire flow, criticality, and demand scaling analyses (<a href="#analyses">above</a>). <!-- see: Analyses --></td></tr>
+	<tr><td>Import and export formats (<a href="#projects-files-and-formats">above</a>). <!-- see: Projects, files, and formats --></td></tr>
+	<tr><td>Coordinate system and unit conversion (<a href="#projects-files-and-formats">above</a>). <!-- see: Projects, files, and formats --></td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="act" id="language-license-and-privacy">
 <h2>Language, license, and privacy <span class="ct">3</span></h2>
 <table class="feats">
 <tbody>
-	<tr><td>Twenty-seven languages, and every word is evaluated for translation.</td></tr>
-	<tr><td>Free software under the GNU GPL, source in the open.</td></tr>
-	<tr><td>No account, no visitor identifier, and nothing counted about you unless you say yes.</td></tr>
+	<tr><td>Twenty-seven languages, and every word is considered for translation. <!-- 15, 22 --></td></tr>
+	<tr><td>Free software under the GNU GPL, source in the open. <!-- 244 --></td></tr>
+	<tr><td>No account, and no visitor identifier or count of you unless you say yes. <!-- 286, 288 --></td></tr>
 </tbody>
 </table>
 </section>
+<!-- END GENERATED FEATURES -->
 
 <div class="go">
 	<a class="btn" data-app="" href="https://epanet-plus-plus.org/app/">Open the network editor</a>
