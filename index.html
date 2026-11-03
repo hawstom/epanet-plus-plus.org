@@ -173,8 +173,9 @@
 			<div>
 				<p>The solver is OWA-EPANET 2.3.5, the open continuation of EPA&rsquo;s EPANET, compiled
 				to run inside your browser. Extended-period runs, water quality, pump energy, rule-based
-				controls, and the valves that set their own position all go through it. A small solver of
-				our own answers a single instant, pressures and flows only.</p>
+				controls, and the valves that set their own position all go through it by default. Our own
+				solver now runs every one of them too, checked against EPANET at each step, so you can
+				choose either.</p>
 			</div>
 			<div>
 				<p>The file format is EPANET&rsquo;s too. EPANET++ reads and writes the <code>.inp</code>
@@ -222,8 +223,8 @@
 			<a class="btn btn-ghost" href="features.html">The whole feature list</a>
 			<a class="btn btn-ghost" href="https://github.com/hawstom/engcalcs">Read the source</a>
 		</div>
-		<p class="note" style="margin-top:1.6rem">A run over time goes through the EPANET engine; the
-		built-in solver has no time dimension. And although you of course prefer working on your PC, it
+		<p class="note" style="margin-top:1.6rem">A run over time goes through the EPANET engine by
+		default, or through the built-in solver if you choose it. And although you of course prefer working on your PC, it
 		works also on a phone in tall mode.</p>
 	</section>
 

@@ -60,11 +60,12 @@
 			<li><b>The engine is EPANET's, and it ships inside the page.</b> A 679 KB browser
 			build of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand. We wrote a drawing
 			surface and put EPANET underneath it.</li>
-			<li><b>Most of the answers only exist because it is there.</b> Extended period
+			<li><b>Most of the answers were first possible because it is there.</b> Extended period
 			simulation, water age, source trace, chemical decay, pump energy, rule-based controls
-			and pressure-reducing, pressure-sustaining and flow-control valves run through the
-			EPANET engine and nothing else. Our own solver does one instant, pressures and flows
-			only, and is not planned to do more.</li>
+			and pressure-reducing, pressure-sustaining and flow-control valves all ran through the
+			EPANET engine before our own solver could do any of them. Our own solver now runs them
+			too, built one piece at a time and checked against EPANET's answers at every step, and
+			EPANET stays the default.</li>
 			<li><b>The interchange format is EPANET's.</b> We read and write EPANET's own
 			<code>.inp</code> file, from <code>[TITLE]</code> to <code>[END]</code> across the
 			sections we support, and a value you did not edit comes back out character for
