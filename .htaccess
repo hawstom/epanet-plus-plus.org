@@ -18,6 +18,8 @@ RedirectMatch 404 "\.(md|sh|py)$"
 # a web app manifest's scope is a plain string prefix, so a visitor at the bare /app could not install.
 # Never add a redirect on /engcalcs/Looped-Network.php here; that loops (the PHP does it).
 RewriteEngine On
+# The front page is index.html; /index.php was linked from the suite's site menu and Google holds it.
+RewriteRule ^index\.php$ / [R=301,L]
 RewriteRule ^app$ /app/ [R=301,L]
 RewriteRule ^app/?$ /engcalcs/Looped-Network.php [L]
 #
