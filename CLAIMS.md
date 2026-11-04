@@ -48,7 +48,7 @@ Each row is a statement about EPANET++ and not about EPANET. No row claims EPANE
 | # | Claim | Source |
 |---|---|---|
 | 3.1 | The engine is a 679 KB browser build of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand | `EC/js/vendor/epanet-js.js` is 678,695 bytes. `EC/js/vendor/README.md` names the engine OWA-EPANET 2.3.5. [OpenWaterAnalytics/EPANET releases](https://github.com/OpenWaterAnalytics/EPANET/releases), v2.3.5, February 20, 2025 |
-| 3.2 | Extended-period runs, water age, source trace, chemical decay, pump energy, rule-based controls, and PRV/PSV/FCV valves run through the EPANET engine only | `EC/CLAUDE.md`, `lpn_` section: EPS "through the EPANET engine only"; "PRV/PSV/FCV solve through EPANET only". Water quality and pump energy are run-based (Tasks 566, 566.01) |
+| 3.2 | Extended-period runs, water age, source trace, chemical decay, pump energy, rule-based controls, and PRV/PSV/FCV valves first ran through the EPANET engine only (historical; superseded by row 3.3) | `EC/CLAUDE.md`, `lpn_` section: EPS "through the EPANET engine only"; "PRV/PSV/FCV solve through EPANET only". Water quality and pump energy are run-based (Tasks 566, 566.01) |
 | 3.3 | Our own solver now runs extended-period runs, water quality, pump energy, rule-based controls and the active valves too, checked against EPANET at each step; EPANET is the default | `EC/CLAUDE.md` `lpn_` section: EPANET runs them as it always has, and EPANET is the default; the built-in solver gained each one in phases, each matched against EPANET 2.3.5 on every shipped example before it merged (`EC/dev/native-eps-plan.md`, `EC/dev/roadmap-closed-ids.md` Task 733, closed 2026-11-03) |
 | 3.4 | EPANET++ reads and writes EPANET's `.inp` file, and an unedited value comes back out character for character | `EC/CLAUDE.md`: "Export is character-exact on Net1/2/3"; `EC/js/lpn-inp.js` |
 | 3.5 | A project also saves in a format of our own, because an `.inp` cannot hold scenarios, profile paths, the backdrop image, map view, multi-line Text, or longitude and latitude; five round trips are reported rather than dropped | Carried from LWN; its ledger rows 2.5a and 2.5b cite `EC/js/looped-network.js` `serializeProject()` and Task 281 |
@@ -84,7 +84,7 @@ Each row is a statement about EPANET++ and not about EPANET. No row claims EPANE
 | # | Claim | Source |
 |---|---|---|
 | 6.1 | The software is GNU GPL v3 or later, with no paid tier | `EC/CLAUDE.md` license line; `EC/dev/positioning.md` §2 |
-| 6.2 | The license paragraph in Disclosures item 2, quoted | Tom Haws, 2026-09-06, carried from LWN |
+| 6.2 | The license paragraph in Disclosures item 6, quoted | Tom Haws, 2026-09-06, carried from LWN |
 | 6.3 | Every calculation runs in your browser; there is no account; it installs and runs offline | `EC/CLAUDE.md`: no database, no authentication, all computation client-side; `EC/dev/features.md` (install for offline use) |
 | 6.4 | Four features reach another server: OSM street tiles (shown on the first, empty project), Mapbox satellite tiles, Nominatim place-name search, and Mapbox terrain elevations; the last two ask their own consent | `EC/CLAUDE.md`, "Four third-party requests, all on this page" |
 | 6.5 | No page of this site makes a request to another server, and none stores anything on your device | `check.sh` check 5 fails on any cross-origin fetch; the site has no script at all |
@@ -108,7 +108,7 @@ Carried from LWN's Credits and About EPANET pages; its ledger section 4 and 5 ro
 | 7.11 | A run report from the editor prints a version higher than EPA's download page offers | `EC/js/vendor/README.md`: printed as `2.3.05`, beside EPA's page offering 2.2.0 |
 | 7.12 | The street map shows on the first, empty project; the search and the elevations each ask their own permission | Row 6.4. LWN's Credits page still says both services are off until turned on; that sentence was corrected here |
 
-## 8. Disclosures items 3 to 5 (disclosures.html)
+## 8. Disclosures items 2 to 5 (disclosures.html)
 
 | # | Claim | Source |
 |---|---|---|
@@ -116,6 +116,7 @@ Carried from LWN's Credits and About EPANET pages; its ledger section 4 and 5 ro
 | 8.2 | We do not publish a completeness claim against EPANET | `EC/dev/positioning.md` §2 |
 | 8.3 | The AI paragraph, quoted | Tom Haws, 2026-09-06, carried from LWN |
 | 8.4 | No EPA, government, or university affiliation, no sponsor, no foundation, no funding | `EC/dev/positioning.md` §1 and §8 |
+| 8.5 | The built-in solver is newer than the EPANET engine and has been matched against EPANET's answers on the shipped examples; the suggestion to run both settings and compare is advice, not a claim | Row 3.3; EPANET first appeared in 1993 (row 7.3) and is used worldwide (row 7.5) |
 
 ## 9. Stated with a caution
 

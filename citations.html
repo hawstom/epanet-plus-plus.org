@@ -105,7 +105,7 @@
 <thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
 <tbody>
 <tr id="c3-1"><td><a class="rownum" href="#c3-1">3.1</a></td><td>The engine is a 679 KB browser build of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand</td><td><code>EC/js/vendor/epanet-js.js</code> is 678,695 bytes. <code>EC/js/vendor/README.md</code> names the engine OWA-EPANET 2.3.5. <a href="https://github.com/OpenWaterAnalytics/EPANET/releases">OpenWaterAnalytics/EPANET releases</a>, v2.3.5, February 20, 2025</td></tr>
-<tr id="c3-2"><td><a class="rownum" href="#c3-2">3.2</a></td><td>Extended-period runs, water age, source trace, chemical decay, pump energy, rule-based controls, and PRV/PSV/FCV valves run through the EPANET engine only</td><td><code>EC/CLAUDE.md</code>, <code>lpn_</code> section: EPS "through the EPANET engine only"; "PRV/PSV/FCV solve through EPANET only". Water quality and pump energy are run-based (Tasks 566, 566.01)</td></tr>
+<tr id="c3-2"><td><a class="rownum" href="#c3-2">3.2</a></td><td>Extended-period runs, water age, source trace, chemical decay, pump energy, rule-based controls, and PRV/PSV/FCV valves first ran through the EPANET engine only (historical; superseded by row 3.3)</td><td><code>EC/CLAUDE.md</code>, <code>lpn_</code> section: EPS "through the EPANET engine only"; "PRV/PSV/FCV solve through EPANET only". Water quality and pump energy are run-based (Tasks 566, 566.01)</td></tr>
 <tr id="c3-3"><td><a class="rownum" href="#c3-3">3.3</a></td><td>Our own solver now runs extended-period runs, water quality, pump energy, rule-based controls and the active valves too, checked against EPANET at each step; EPANET is the default</td><td><code>EC/CLAUDE.md</code> <code>lpn_</code> section: EPANET runs them as it always has, and EPANET is the default; the built-in solver gained each one in phases, each matched against EPANET 2.3.5 on every shipped example before it merged (<code>EC/dev/native-eps-plan.md</code>, <code>EC/dev/roadmap-closed-ids.md</code> Task 733, closed 2026-11-03)</td></tr>
 <tr id="c3-4"><td><a class="rownum" href="#c3-4">3.4</a></td><td>EPANET++ reads and writes EPANET&rsquo;s <code>.inp</code> file, and an unedited value comes back out character for character</td><td><code>EC/CLAUDE.md</code>: "Export is character-exact on Net1/2/3"; <code>EC/js/lpn-inp.js</code></td></tr>
 <tr id="c3-5"><td><a class="rownum" href="#c3-5">3.5</a></td><td>A project also saves in a format of our own, because an <code>.inp</code> cannot hold scenarios, profile paths, the backdrop image, map view, multi-line Text, or longitude and latitude; five round trips are reported rather than dropped</td><td>Carried from LWN; its ledger rows 2.5a and 2.5b cite <code>EC/js/looped-network.js</code> <code>serializeProject()</code> and Task 281</td></tr>
@@ -147,7 +147,7 @@
 <thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
 <tbody>
 <tr id="c6-1"><td><a class="rownum" href="#c6-1">6.1</a></td><td>The software is GNU GPL v3 or later, with no paid tier</td><td><code>EC/CLAUDE.md</code> license line; <code>EC/dev/positioning.md</code> §2</td></tr>
-<tr id="c6-2"><td><a class="rownum" href="#c6-2">6.2</a></td><td>The license paragraph in Disclosures item 2, quoted</td><td>Tom Haws, 2026-09-06, carried from LWN</td></tr>
+<tr id="c6-2"><td><a class="rownum" href="#c6-2">6.2</a></td><td>The license paragraph in Disclosures item 6, quoted</td><td>Tom Haws, 2026-09-06, carried from LWN</td></tr>
 <tr id="c6-3"><td><a class="rownum" href="#c6-3">6.3</a></td><td>Every calculation runs in your browser; there is no account; it installs and runs offline</td><td><code>EC/CLAUDE.md</code>: no database, no authentication, all computation client-side; <code>EC/dev/features.md</code> (install for offline use)</td></tr>
 <tr id="c6-4"><td><a class="rownum" href="#c6-4">6.4</a></td><td>Four features reach another server: OSM street tiles (shown on the first, empty project), Mapbox satellite tiles, Nominatim place-name search, and Mapbox terrain elevations; the last two ask their own consent</td><td><code>EC/CLAUDE.md</code>, "Four third-party requests, all on this page"</td></tr>
 <tr id="c6-5"><td><a class="rownum" href="#c6-5">6.5</a></td><td>No page of this site makes a request to another server, and none stores anything on your device</td><td><code>check.sh</code> check 5 fails on any cross-origin fetch; the site has no script at all</td></tr>
@@ -174,7 +174,7 @@
 </tbody></table></div>
 </div>
 <div class="item">
-<h3>8. Disclosures items 3 to 5 (disclosures.html)</h3>
+<h3>8. Disclosures items 2 to 5 (disclosures.html)</h3>
 <div class="table-scroll"><table>
 <thead><tr><th>#</th><th>Claim</th><th>Source</th></tr></thead>
 <tbody>
@@ -182,6 +182,7 @@
 <tr id="c8-2"><td><a class="rownum" href="#c8-2">8.2</a></td><td>We do not publish a completeness claim against EPANET</td><td><code>EC/dev/positioning.md</code> §2</td></tr>
 <tr id="c8-3"><td><a class="rownum" href="#c8-3">8.3</a></td><td>The AI paragraph, quoted</td><td>Tom Haws, 2026-09-06, carried from LWN</td></tr>
 <tr id="c8-4"><td><a class="rownum" href="#c8-4">8.4</a></td><td>No EPA, government, or university affiliation, no sponsor, no foundation, no funding</td><td><code>EC/dev/positioning.md</code> §1 and §8</td></tr>
+<tr id="c8-5"><td><a class="rownum" href="#c8-5">8.5</a></td><td>The built-in solver is newer than the EPANET engine and has been matched against EPANET&rsquo;s answers on the shipped examples; the suggestion to run both settings and compare is advice, not a claim</td><td>Row 3.3; EPANET first appeared in 1993 (row 7.3) and is used worldwide (row 7.5)</td></tr>
 </tbody></table></div>
 </div>
 <div class="item">
