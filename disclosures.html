@@ -53,35 +53,34 @@
 <section>
 
 	<div class="item">
-		<h3>1. EPANET is our lineage and our reference, not our dependency</h3>
+		<h3>1. EPANET is our lineage and our reference</h3>
 		<p>EPANET gave us the file format, the vocabulary, and the answers we are checked against.
-		We built a solver of our own, and it now runs extended periods, water quality, every valve
-		type, rules, and patterns itself. EPANET is still offered as the default engine setting,
-		and you can choose either. The specifics, each one listed with its source on the
+		We built a solver of our own, and it runs extended periods, water quality, every valve
+		type, rules, and patterns itself. EPANET is offered as the default engine setting,
+		and you can choose either one. The specifics, each one listed with its source on the
 		<a href="citations.html">Citations</a> page:</p>
 		<ul class="facts">
-			<li><b>The file format is EPANET&rsquo;s.</b> We read and write EPANET&rsquo;s own
-			<code>.inp</code> file, from <code>[TITLE]</code> to <code>[END]</code> across the
-			sections we support, and a value you did not edit comes back out character for
-			character.
-			<span class="qualify">We have a format of our own too: a project saves as JSON,
+			<li><b>The file format is EPANET&rsquo;s.</b> We read and write EPANET&rsquo;s 
+      <code>.inp</code> file, from <code>[TITLE]</code> to <code>[END]</code> across the
+			sections we support, and a value you did not edit comes back out verbatim.
+			<span class="qualify">We have our own format too: a project saves as JSON,
 			because an <code>.inp</code> cannot hold scenarios, saved profile paths, the background
 			picture itself, map tiles and your view, a Text label with more than one line, or
-			longitude and latitude. Everything an <code>.inp</code> can carry still round-trips
-			through one, and the five things it cannot are reported rather than dropped.</span></li>
+			longitude and latitude. Everything an <code>.inp</code> can carry round-trips
+			through one, and the things it cannot are reported rather than dropped.</span></li>
 			<li><b>The vocabulary is EPANET&rsquo;s.</b> Junction, reservoir, tank, pipe, pump, valve.
 			Extended period simulation. Trials and iterations, static pressure, drawdown, converge.
 			The four curve types. The grammar of a rule. What happens when you change a unit. An
 			engineer who knows EPANET should not have to learn a second dialect from us, and a
 			build check fails when we start writing one.</li>
-			<li><b>The answers we are measured against are EPANET&rsquo;s.</b> Our own solver was
+			<li><b>The answers we are measured against are EPANET&rsquo;s.</b> Our solver was
 			built one piece at a time and matched against EPANET 2.3.5 on every shipped example
 			before each piece was released. Extended period results are also compared against
 			EPA&rsquo;s own report for its Net3 example network: 2,425 head comparisons across
 			25 reporting steps, agreeing to 0.005 ft. Water quality is anchored on the same
 			report, worst difference 0.105%. Pump energy is anchored on that report&rsquo;s own
 			energy table.</li>
-			<li><b>The engine is still offered, and it is the default.</b> A 679 KB browser build
+			<li><b>The EPANET engine is still offered, and it is the default.</b> A 679 KB browser build
 			of OWA-EPANET 2.3.5, released 2025-02-20, loaded on demand. It is the setting a new
 			project opens with. You can switch to our built-in solver in the settings.</li>
 			<li><b>Even the arithmetic follows EPANET.</b> Our one Hazen-Williams coefficient pair
@@ -92,8 +91,8 @@
 			<li><b>The interface is inspired by and informed by EPANET&rsquo;s.</b> Its curve editor
 			and its table of assets are where ours came from, and its five map colors are in our
 			palette unsoftened, though our default is Viridis. What we added on top is the
-			&ldquo;++&rdquo;: scenarios, a world map, fire flow, customers, custom properties, asset
-			libraries you can import across projects, find and replace, flexible multi-labels, a
+			&ldquo;++&rdquo;: scenarios, world map and coordinate systems, import and export formats, fire flow, customers, custom properties, asset
+			libraries you can import across projects, spreadsheet tables, find and replace, flexible multi-labels, a
 			menu system we hope is easier, and being a web page rather than a Windows program.</li>
 		</ul>
 		<p>That is a debt and a lineage. If EPANET had not existed, or had not been given
@@ -105,19 +104,15 @@
 		<p>EPANET first appeared in 1993 and is used worldwide. Our built-in solver is new. It
 		has been matched against EPANET&rsquo;s answers on the examples we ship, and it has
 		its record is no longer than that. If a result matters, run it under both engine settings and
-		compare. If they disagree, we want the network.</p>
+		compare. If they disagree, please send us the network file.</p>
 	</div>
 
 	<div class="item">
 		<h3>3. We are new, with all that implies</h3>
-		<p>Development started on 28 July 2026. As of 1 September 2026 the software has carried
-		one real-world design report. Counting the defects found and fixed since would tell you
-		nothing you could use; what those two dates tell you is that the ones nobody has hit yet
-		are still in there.</p>
+		<p>Development started on 28 July 2026.</p>
 		<p>We do not publish a completeness claim against EPANET, and nothing on this site should
 		be read as one. The &ldquo;++&rdquo; names what we added, not a claim to everything EPANET
-		does. If you find something EPANET does that EPANET++ does not, that is a report we
-		want.</p>
+		does. If you find something EPANET does that EPANET++ does not, please let us know.</p>
 	</div>
 
 	<div class="item">
